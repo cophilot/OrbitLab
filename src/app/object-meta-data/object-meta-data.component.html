@@ -1,0 +1,20 @@
+<div class="container" *ngIf="getObjectService().getSelectedObject() != -1">
+  <p>{{ getObjectService().getSelectedObjectAsObject().name }}</p>
+  <p>{{ "X: " + getObjectService().getSelectedObjectAsObject().x }}</p>
+  <p>{{ "Y: " + getObjectService().getSelectedObjectAsObject().y }}</p>
+  <p>
+    {{
+      "Velocity: (" +
+        getObjectService().getSelectedObjectAsObject().velocity.x +
+        ";" +
+        getObjectService().getSelectedObjectAsObject().velocity.y +
+        ")"
+    }}
+  </p>
+  <p>
+    {{ "Weight: " + getObjectService().getSelectedObjectAsObject().weight }}
+  </p>
+  <p>
+    {{ "Radius: " + getObjectService().getSelectedObjectAsObject().radius }}
+  </p>
+</div>

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Obj } from '../utils/Obj';
+import { LocalStorageService } from './local-storage.service';
+import { VVector } from '../utils/VVector';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +9,12 @@ import { Obj } from '../utils/Obj';
 export class ObjectService {
   private objects: Obj[] = [];
 
-  constructor() {}
+  private selectedObject: Obj | null = null;
+
+  constructor(private localStorageService: LocalStorageService) {
+    this.objects = this.localStorageService.getObjects();
+    Obj.idCounter = this.objects.length;
+  }
 
   getObjects(): Obj[] {
     return this.objects;
@@ -18,9 +25,14 @@ export class ObjectService {
     startX: number,
     startY: number,
     radius: number,
+    weight: number,
+    velocity: VVector,
     color: string = 'red'
   ): void {
-    this.objects.push(new Obj(name, startX, startY, radius, color));
+    this.objects.push(
+      new Obj(name, startX, startY, radius, weight, velocity, color)
+    );
+    this.localStorageService.saveObjects(this.objects);
   }
 
   addObject(object: Obj): void {
@@ -29,5 +41,27 @@ export class ObjectService {
 
   deleteObject(id: number): void {
     this.objects = this.objects.filter((object) => object.id !== id);
+    this.localStorageService.saveObjects(this.objects);
+  }
+
+  getSelectedObject(): number {
+    if (this.selectedObject) {
+      return this.selectedObject.id;
+    }
+    return -1;
+  }
+  getSelectedObjectAsObject(): any {
+    return this.selectedObject;
+  }
+
+  setSelectedObject(obj: Obj | null): void {
+    this.selectedObject = obj;
+  }
+
+  deleteSelectedObject(): void {
+    if (this.selectedObject) {
+      this.deleteObject(this.selectedObject.id);
+    }
+    this.selectedObject = null;
   }
 }

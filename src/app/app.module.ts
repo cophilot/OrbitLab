@@ -7,6 +7,8 @@ import { ObjectComponent } from './object/object.component';
 import { CoordinateSystemComponent } from './coordinate-system/coordinate-system.component';
 import { AddObjectFormComponent } from './add-object-form/add-object-form.component';
 import { FormsModule } from '@angular/forms';
+import { ObjectMetaDataComponent } from './object-meta-data/object-meta-data.component';
+import { ArrowComponent } from './arrow/arrow.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { FormsModule } from '@angular/forms';
     ObjectComponent,
     CoordinateSystemComponent,
     AddObjectFormComponent,
+    ObjectMetaDataComponent,
+    ArrowComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

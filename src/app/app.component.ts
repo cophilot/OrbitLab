@@ -13,8 +13,8 @@ export class AppComponent {
 
   constructor(private objectService: ObjectService) {}
 
-  getObjects() {
-    return this.objectService.getObjects();
+  getObjectService() {
+    return this.objectService;
   }
 
   closeAddObjectForm() {

@@ -1,14 +1,34 @@
+<img
+  src="../assets/logo_small.png"
+  alt="logo"
+  class="logo"
+  (click)="getObjectService().setSelectedObject(null)"
+/>
 <app-coordinate-system></app-coordinate-system>
-<app-object *ngFor="let object of getObjects()" [object]="object"></app-object>
+<app-object
+  *ngFor="let object of getObjectService().getObjects()"
+  [object]="object"
+></app-object>
 <app-add-object-form
   *ngIf="showAddObjectForm"
   (closeForm)="closeAddObjectForm()"
 ></app-add-object-form>
 
 <button
-  class="addButton"
+  class="interactButton"
   *ngIf="!showAddObjectForm"
   (click)="showAddObjectForm = true"
+  [style.left.px]="10"
 >
   +
 </button>
+<button
+  class="interactButton"
+  (click)="getObjectService().deleteSelectedObject()"
+  [style.left.px]="60"
+  *ngIf="getObjectService().getSelectedObject() != -1"
+>
+  -
+</button>
+
+<app-object-meta-data></app-object-meta-data>

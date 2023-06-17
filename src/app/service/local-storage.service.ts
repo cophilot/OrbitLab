@@ -14,7 +14,12 @@ export class LocalStorageService {
   getObjects(): Obj[] {
     const objects = localStorage.getItem('objects');
     if (objects) {
-      return JSON.parse(objects);
+      let objectArray = JSON.parse(objects);
+      let objs: Obj[] = [];
+      for (let object of objectArray) {
+        objs.push(Obj.getObjFromJson(object));
+      }
+      return objs;
     }
     return [];
   }

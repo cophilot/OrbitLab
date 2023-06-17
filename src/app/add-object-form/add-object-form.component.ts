@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { ObjectService } from '../service/object.service';
+import { VVector } from '../utils/VVector';
 
 @Component({
   selector: 'app-add-object-form',
@@ -10,7 +11,10 @@ export class AddObjectFormComponent {
   name: string = '';
   startX: number = 0;
   startY: number = 0;
+  vX: number = 0;
+  vY: number = 0;
   radius: number = 10;
+  weight: number = 10;
   color: string = 'red';
 
   wrongInput = false;
@@ -29,6 +33,8 @@ export class AddObjectFormComponent {
       this.startX,
       this.startY,
       this.radius,
+      this.weight,
+      new VVector(this.vX, this.vY),
       this.color
     );
     this.name = '';

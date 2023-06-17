@@ -4,10 +4,11 @@
   height: 100%
 .container
   position: fixed
-  width: 400px
+  width: 500px
   top: 5%
   left: 50px
-  background-color: white
+  background-color: #06001f
+  border: 1px solid white
   border-radius: 15px
   display: flex
   flex-direction: column
@@ -15,6 +16,9 @@
   padding: 20px
   top: 50%
   transform: translateY(-50%)
+  animation: slideInFromLeft 0.3s
+  box-shadow: 0 0 10px 0 #ffffff
+  color: white
   .row
     display: flex
     flex-direction: row
@@ -24,7 +28,7 @@
     p
       font-size: 20px
       font-weight: bold
-      color: #333
+      color: white
     input
       width: 60%
       height: 30px
@@ -58,3 +62,9 @@
       &:hover
         cursor: pointer
         scale: 1.1
+
+@keyframes slideInFromLeft
+  0%
+    transform: translate(-100%, -50%)
+  100%
+    transform: translate(0, -50%)
