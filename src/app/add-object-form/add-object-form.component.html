@@ -1,0 +1,29 @@
+<div class="background" (click)="close()"></div>
+<div class="container">
+  <h1>Add Object</h1>
+  <p [style.color]="'red'" *ngIf="wrongInput">Wrong input!</p>
+  <div class="row">
+    <p>Name:</p>
+    <input type="text" placeholder="Name" [(ngModel)]="name" />
+  </div>
+  <div class="row">
+    <p>Start X:</p>
+    <input type="number" placeholder="X" [(ngModel)]="startX" />
+  </div>
+  <div class="row">
+    <p>Start Y:</p>
+    <input type="number" placeholder="Y" [(ngModel)]="startY" />
+  </div>
+  <div class="row">
+    <p>Radius:</p>
+    <input type="number" placeholder="Radius" [(ngModel)]="radius" />
+  </div>
+  <div class="row">
+    <p>Color:</p>
+    <input type="text" placeholder="Color" [(ngModel)]="color" />
+  </div>
+  <div class="buttonContainer">
+    <button class="closeButton" (click)="close()">Close</button>
+    <button class="addButton" (click)="add()">Add</button>
+  </div>
+</div>

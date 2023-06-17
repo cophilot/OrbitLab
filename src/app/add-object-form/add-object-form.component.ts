@@ -1,0 +1,51 @@
+import { Component, Output, EventEmitter } from '@angular/core';
+import { ObjectService } from '../service/object.service';
+
+@Component({
+  selector: 'app-add-object-form',
+  templateUrl: './add-object-form.component.html',
+  styleUrls: ['./add-object-form.component.sass'],
+})
+export class AddObjectFormComponent {
+  name: string = '';
+  startX: number = 0;
+  startY: number = 0;
+  radius: number = 10;
+  color: string = 'red';
+
+  wrongInput = false;
+
+  @Output() closeForm = new EventEmitter();
+
+  constructor(private objectService: ObjectService) {}
+
+  add() {
+    if (this.name === '' || this.radius <= 0 || this.color === '') {
+      this.wrongInput = true;
+      return;
+    }
+    this.objectService.addNewObject(
+      this.name,
+      this.startX,
+      this.startY,
+      this.radius,
+      this.color
+    );
+    this.name = '';
+    this.startX = 0;
+    this.startY = 0;
+    this.radius = 10;
+    this.color = 'red';
+    this.wrongInput = false;
+  }
+
+  close() {
+    this.name = '';
+    this.startX = 0;
+    this.startY = 0;
+    this.radius = 10;
+    this.color = 'red';
+    this.wrongInput = false;
+    this.closeForm.emit();
+  }
+}

@@ -1,0 +1,12 @@
+<div
+  class="object"
+  [style.width.px]="object.radius * 2"
+  [style.height.px]="object.radius * 2"
+  [style.left.px]="object.getScreenCoordinates()[0]"
+  [style.top.px]="object.getScreenCoordinates()[1]"
+  [style.background-color]="object.color"
+>
+  <p class="name" [style.top.px]="object.radius * 2 - 20">
+    {{ object.name }}
+  </p>
+</div>
