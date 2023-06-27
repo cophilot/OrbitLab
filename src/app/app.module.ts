@@ -9,6 +9,9 @@ import { AddObjectFormComponent } from './add-object-form/add-object-form.compon
 import { FormsModule } from '@angular/forms';
 import { ObjectMetaDataComponent } from './object-meta-data/object-meta-data.component';
 import { ArrowComponent } from './arrow/arrow.component';
+import { PlayBarComponent } from './play-bar/play-bar.component';
+import { SettingsComponent } from './settings/settings/settings.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { ArrowComponent } from './arrow/arrow.component';
     AddObjectFormComponent,
     ObjectMetaDataComponent,
     ArrowComponent,
+    PlayBarComponent,
+    SettingsComponent,
+    HomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

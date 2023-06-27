@@ -16,6 +16,10 @@ export class ObjectService {
     Obj.idCounter = this.objects.length;
   }
 
+  reset(): void {
+    this.objects = this.localStorageService.getObjects();
+  }
+
   getObjects(): Obj[] {
     return this.objects;
   }

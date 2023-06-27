@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ObjectService } from './service/object.service';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +7,4 @@ import { ObjectService } from './service/object.service';
 })
 export class AppComponent {
   title = 'OrbitLab';
-
-  showAddObjectForm = false;
-
-  constructor(private objectService: ObjectService) {}
-
-  getObjectService() {
-    return this.objectService;
-  }
-
-  closeAddObjectForm() {
-    this.showAddObjectForm = false;
-  }
 }

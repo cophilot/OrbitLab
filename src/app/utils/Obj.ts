@@ -29,6 +29,11 @@ export class Obj {
     this.weight = weight;
   }
 
+  move() {
+    this.x += this.velocity.x;
+    this.y += this.velocity.y;
+  }
+
   getScreenCoordinates(): number[] {
     let newX = this.x - this.radius + window.innerWidth / 2;
     let newY = window.innerHeight / 2 - this.y - this.radius;

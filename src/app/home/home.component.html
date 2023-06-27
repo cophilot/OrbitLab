@@ -1,0 +1,40 @@
+<img
+  src="../assets/logo_small.png"
+  alt="home"
+  class="smallLogo"
+  (click)="getObjectService().setSelectedObject(null)"
+/>
+<img
+  src="../assets/settingsIcon.png"
+  alt="settings"
+  class="settingsButton"
+  (click)="goToSettings()"
+/>
+<app-coordinate-system></app-coordinate-system>
+<app-object
+  *ngFor="let object of getObjectService().getObjects()"
+  [object]="object"
+></app-object>
+<app-add-object-form
+  *ngIf="showAddObjectForm"
+  (closeForm)="closeAddObjectForm()"
+></app-add-object-form>
+
+<button
+  class="interactButton myButton"
+  *ngIf="!showAddObjectForm"
+  (click)="showAddObjectForm = true"
+  [style.left.px]="10"
+>
+  +
+</button>
+<button
+  class="interactButton myButton"
+  (click)="getObjectService().deleteSelectedObject()"
+  [style.left.px]="60"
+  *ngIf="getObjectService().getSelectedObject() != -1"
+>
+  -
+</button>
+<app-play-bar class="playBar"></app-play-bar>
+<app-object-meta-data></app-object-meta-data>
