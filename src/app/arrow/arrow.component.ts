@@ -88,8 +88,6 @@ export class ArrowComponent {
 
     top = window.innerHeight / 2 - top;
     left += window.innerWidth / 2;
-    console.log(top);
-    console.log(left);
     return [top, left];
   }
 }
