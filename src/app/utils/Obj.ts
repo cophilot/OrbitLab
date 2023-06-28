@@ -9,6 +9,12 @@ export class Obj {
   radius: number;
   weight: number;
   color: string;
+
+  private newX: number | undefined = undefined;
+  private newY: number | undefined = undefined;
+
+  private history: any[] = [];
+
   static idCounter = 0;
   constructor(
     name: string,
@@ -27,11 +33,35 @@ export class Obj {
     this.color = color;
     this.velocity = velocity;
     this.weight = weight;
+    this.makeHistoryPoint();
   }
 
-  move() {
-    this.x += this.velocity.x;
-    this.y += this.velocity.y;
+  stageMove(forward: boolean = true) {
+    if (forward) {
+      this.newX = this.x + this.velocity.x;
+      this.newY = this.y + this.velocity.y;
+    } else if (this.history.length > 0) {
+      this.newX = this.history[this.history.length - 1].x;
+      this.newY = this.history[this.history.length - 1].y;
+    }
+  }
+
+  applyMove(forward: boolean = true) {
+    if (this.newX !== undefined && this.newY !== undefined) {
+      this.x = this.newX;
+      this.y = this.newY;
+      this.newX = undefined;
+      this.newY = undefined;
+      if (forward) {
+        this.makeHistoryPoint();
+      } else if (this.history.length > 1) {
+        this.history.pop();
+      }
+    }
+  }
+
+  makeHistoryPoint() {
+    this.history.push({ x: this.x, y: this.y });
   }
 
   getScreenCoordinates(): number[] {

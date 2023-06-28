@@ -1,6 +1,17 @@
+<div class="container" *ngIf="!isPlaying()">
+  <button class="myButton" style="width: 100px" (click)="prevStep()">
+    Previous
+  </button>
+  <button class="myButton" style="width: 100px" (click)="nextStep()">
+    Next
+  </button>
+</div>
 <div class="container">
   <button class="myButton" style="width: 100px" (click)="reset()">Reset</button>
   <button class="myButton" style="width: 100px" (click)="togglePlayPause()">
-    {{ isPlaying ? "Pause" : "Play" }}
+    {{ isPlaying() ? "Pause" : "Play" }}
+  </button>
+  <button class="myButton" style="width: 100px" (click)="toggleSpeed()">
+    {{ "x" + playSpeed }}
   </button>
 </div>

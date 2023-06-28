@@ -8,15 +8,44 @@ import { ObjectService } from '../service/object.service';
   styleUrls: ['./play-bar.component.sass'],
 })
 export class PlayBarComponent {
-  isPlaying: boolean = false;
+  playSpeed: number = 1;
 
   constructor(
     private moveService: MoveService,
     private objectService: ObjectService
   ) {}
 
+  nextStep() {
+    this.moveService.nextStep();
+  }
+  prevStep() {
+    this.moveService.prevStep();
+  }
+
+  toggleSpeed() {
+    switch (this.playSpeed) {
+      case 1:
+        this.playSpeed = 2;
+        break;
+      case 2:
+        this.playSpeed = 5;
+        break;
+      case 5:
+        this.playSpeed = 10;
+        break;
+      case 10:
+        this.playSpeed = 0.5;
+        break;
+      case 0.5:
+        this.playSpeed = 1;
+        break;
+    }
+
+    this.moveService.setSpeed(1000 / this.playSpeed);
+  }
+
   togglePlayPause() {
-    if (this.isPlaying) {
+    if (this.isPlaying()) {
       this.pause();
     } else {
       this.play();
@@ -24,16 +53,19 @@ export class PlayBarComponent {
   }
 
   play() {
-    this.isPlaying = true;
     this.moveService.start();
   }
 
   pause() {
-    this.isPlaying = false;
     this.moveService.stop();
   }
 
   reset() {
+    this.pause();
     this.objectService.reset();
+  }
+
+  isPlaying() {
+    return this.moveService.isPlaying;
   }
 }

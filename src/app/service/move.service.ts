@@ -7,24 +7,53 @@ import { ObjectService } from './object.service';
 export class MoveService {
   private interval: any | null = null;
 
-  intervalTime: number = 100;
+  isPlaying: boolean = false;
+
+  speed: number = 1000;
 
   constructor(private objectService: ObjectService) {}
+
+  setSpeed(speed: number) {
+    this.speed = speed;
+    if (this.isPlaying) {
+      this.start();
+    }
+  }
 
   start() {
     if (this.interval) {
       clearInterval(this.interval);
     }
     this.interval = setInterval(() => {
-      this.objectService.getObjects().forEach((object) => {
-        object.move();
-      });
-    }, this.intervalTime);
+      this.nextStep();
+    }, this.speed);
+    this.isPlaying = true;
+  }
+
+  nextStep() {
+    this.objectService.getObjects().forEach((object) => {
+      object.stageMove();
+    });
+    this.applyMoves();
+  }
+
+  prevStep() {
+    this.objectService.getObjects().forEach((object) => {
+      object.stageMove(false);
+    });
+    this.applyMoves(false);
+  }
+
+  applyMoves(forward: boolean = true) {
+    this.objectService.getObjects().forEach((object) => {
+      object.applyMove(forward);
+    });
   }
 
   stop() {
     if (this.interval) {
       clearInterval(this.interval);
     }
+    this.isPlaying = false;
   }
 }

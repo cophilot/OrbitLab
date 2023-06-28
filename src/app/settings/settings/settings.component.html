@@ -4,3 +4,35 @@
   class="smallLogo"
   (click)="goToHome()"
 />
+
+<div class="settings">
+  <h1>View</h1>
+  <div class="row">
+    <p class="label">Show coordinate system</p>
+    <button class="actionButton">ON</button>
+  </div>
+  <h1>Import & Export</h1>
+  <div class="row">
+    <p class="label">Import from JSON</p>
+    <button class="actionButton" (click)="importObjects()">Import</button>
+  </div>
+  <div class="row">
+    <p class="label">Export to JSON</p>
+    <button class="actionButton" (click)="exportObjects()">Export</button>
+  </div>
+  <h1>Local Storage</h1>
+  <div class="row">
+    <p class="label">Clear local storage</p>
+    <button class="actionButton" (click)="clearLocalStorage()">Clear</button>
+  </div>
+  <h1>Contact</h1>
+  <div class="row">
+    <p class="label">Report an issue</p>
+    <a
+      href="mailto:philxsb@gmail.com"
+      class="actionButton"
+      (click)="clearLocalStorage()"
+      >Report</a
+    >
+  </div>
+</div>
