@@ -31,4 +31,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 by [Philipp B.](https://github.com/phil1436)
 
-<!-- ng deploy --base-href=https://phil1436.github.io/OrbitLab/ -->
+<!-- ng deploy --base-href=https://orbitlab.philipp-bonin.com --cname=orbitlab.philipp-bonin.com -->
