@@ -6,12 +6,15 @@
 />
 
 <div class="settings">
-  <h1>View</h1>
+  <h1>OrbitLab Settings</h1>
+  <h2>View</h2>
   <div class="row">
     <p class="label">Show coordinate system</p>
-    <button class="actionButton">ON</button>
+    <button class="actionButton" (click)="toggleCoordinateSystem()">
+      {{ getSettings().getShowCoordinateSystem() ? "ON" : "OFF" }}
+    </button>
   </div>
-  <h1>Import & Export</h1>
+  <h2>Import & Export</h2>
   <div class="row">
     <p class="label">Import from JSON</p>
     <button class="actionButton" (click)="importObjects()">Import</button>
@@ -20,19 +23,24 @@
     <p class="label">Export to JSON</p>
     <button class="actionButton" (click)="exportObjects()">Export</button>
   </div>
-  <h1>Local Storage</h1>
+  <h2>Local Storage</h2>
   <div class="row">
     <p class="label">Clear local storage</p>
     <button class="actionButton" (click)="clearLocalStorage()">Clear</button>
   </div>
-  <h1>Contact</h1>
+  <h2>Contact</h2>
   <div class="row">
     <p class="label">Report an issue</p>
-    <a
-      href="mailto:philxsb@gmail.com"
+    <a href="mailto:philxsb@gmail.com" class="actionLink">Report</a>
+  </div>
+  <div class="row">
+    <p class="label"></p>
+    <button
       class="actionButton"
-      (click)="clearLocalStorage()"
-      >Report</a
+      (click)="goToHome()"
+      style="margin-top: 20px; margin-bottom: 20px"
     >
+      Back
+    </button>
   </div>
 </div>

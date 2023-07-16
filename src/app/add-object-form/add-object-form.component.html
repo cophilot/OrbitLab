@@ -32,7 +32,12 @@
   </div>
   <div class="row">
     <p>Color:</p>
-    <input type="color" placeholder="Color" [(ngModel)]="color" />
+    <input
+      type="color"
+      placeholder="Color"
+      [(ngModel)]="color"
+      class="colorInput"
+    />
   </div>
   <div class="buttonContainer">
     <button class="closeButton" (click)="close()">Close</button>
