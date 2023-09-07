@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ObjectService } from '../service/object.service';
 import { Router } from '@angular/router';
+import { SettingsService } from '../service/settings.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,11 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   showAddObjectForm = false;
 
-  constructor(private objectService: ObjectService, private router: Router) {}
+  constructor(
+    private objectService: ObjectService,
+    private router: Router,
+    private settingsService: SettingsService
+  ) {}
 
   getObjectService() {
     return this.objectService;
@@ -22,5 +27,8 @@ export class HomeComponent {
 
   goToSettings() {
     this.router.navigate(['settings']);
+  }
+  getSettingsService() {
+    return this.settingsService;
   }
 }

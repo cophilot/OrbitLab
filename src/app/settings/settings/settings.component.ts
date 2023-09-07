@@ -39,9 +39,18 @@ export class SettingsComponent {
       reader.onload = () => {
         const objects = JSON.parse(reader.result as string);
         this.localStorageService.saveObjects(objects);
+        window.location.reload();
       };
     };
     input.click();
+  }
+
+  toggleCoordinateSystem() {
+    this.settingsService.toggleCoordinateSystem();
+  }
+
+  getSettings() {
+    return this.settingsService;
   }
 
   clearLocalStorage() {

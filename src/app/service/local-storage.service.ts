@@ -24,6 +24,18 @@ export class LocalStorageService {
     return [];
   }
 
+  getSettings() {
+    const settings = localStorage.getItem('settings');
+    if (settings) {
+      return JSON.parse(settings);
+    }
+    return undefined;
+  }
+
+  saveSettings(settings: any) {
+    localStorage.setItem('settings', JSON.stringify(settings));
+  }
+
   clear() {
     localStorage.clear();
   }
