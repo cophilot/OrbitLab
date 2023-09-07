@@ -10,8 +10,8 @@ export class Obj {
   weight: number;
   color: string;
 
-  private newX: number | undefined = undefined;
-  private newY: number | undefined = undefined;
+  private moveVectorX: number = 0;
+  private moveVectorY: number = 0;
 
   private history: any[] = [];
 
@@ -36,27 +36,38 @@ export class Obj {
     this.makeHistoryPoint();
   }
 
+  calculateGravityForce(object2: Obj) {
+    let distance = Math.sqrt(
+      (this.x - object2.x) * (this.x - object2.x) +
+        (this.y - object2.y) * (this.y - object2.y)
+    );
+    let force = (this.weight * object2.weight) / (distance * distance);
+    let forceX = force * ((object2.x - this.x) / distance);
+    let forceY = force * ((object2.y - this.y) / distance);
+    console.log(forceX, forceY);
+    this.velocity.x += forceX / this.weight;
+    this.velocity.y += forceY / this.weight;
+  }
+
   stageMove(forward: boolean = true) {
     if (forward) {
-      this.newX = this.x + this.velocity.x;
-      this.newY = this.y + this.velocity.y;
+      this.moveVectorX += this.velocity.x;
+      this.moveVectorY += this.velocity.y;
     } else if (this.history.length > 0) {
-      this.newX = this.history[this.history.length - 1].x;
-      this.newY = this.history[this.history.length - 1].y;
+      this.moveVectorX = this.history[this.history.length - 1].x - this.x;
+      this.moveVectorY = this.history[this.history.length - 1].y - this.y;
     }
   }
 
   applyMove(forward: boolean = true) {
-    if (this.newX !== undefined && this.newY !== undefined) {
-      this.x = this.newX;
-      this.y = this.newY;
-      this.newX = undefined;
-      this.newY = undefined;
-      if (forward) {
-        this.makeHistoryPoint();
-      } else if (this.history.length > 1) {
-        this.history.pop();
-      }
+    this.x += this.moveVectorX;
+    this.y += this.moveVectorY;
+    this.moveVectorX = 0;
+    this.moveVectorY = 0;
+    if (forward) {
+      this.makeHistoryPoint();
+    } else if (this.history.length > 1) {
+      this.history.pop();
     }
   }
 

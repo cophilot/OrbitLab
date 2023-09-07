@@ -32,6 +32,11 @@ export class MoveService {
 
   nextStep() {
     this.objectService.getObjects().forEach((object) => {
+      this.objectService.getObjects().forEach((object2) => {
+        if (object.id !== object2.id) {
+          object.calculateGravityForce(object2);
+        }
+      });
       object.stageMove();
     });
     this.applyMoves();
