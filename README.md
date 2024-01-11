@@ -9,17 +9,17 @@
 
 <!-- Badges -->
 <!-- <div align="center">
-   <a href="https://github.com/phil1436/OrbitLab/releases">
-       <img src="https://img.shields.io/github/v/release/phil1436/OrbitLab?display_name=tag" alt="current realease" />
+   <a href="https://github.com/cophilot/OrbitLab/releases">
+       <img src="https://img.shields.io/github/v/release/cophilot/OrbitLab?display_name=tag" alt="current realease" />
    </a>
-   <a href="https://github.com/phil1436/OrbitLab/blob/master/LICENSE">
-       <img src="https://img.shields.io/github/license/phil1436/OrbitLab" alt="license" />
+   <a href="https://github.com/cophilot/OrbitLab/blob/master/LICENSE">
+       <img src="https://img.shields.io/github/license/cophilot/OrbitLab" alt="license" />
    </a>
-   <a href="https://github.com/phil1436/OrbitLab/stargazers">
-       <img src="https://img.shields.io/github/stars/phil1436/OrbitLab" alt="stars" />
+   <a href="https://github.com/cophilot/OrbitLab/stargazers">
+       <img src="https://img.shields.io/github/stars/cophilot/OrbitLab" alt="stars" />
    </a>
-   <a href="https://github.com/phil1436/OrbitLab/commits/master">
-       <img src="https://img.shields.io/github/last-commit/phil1436/OrbitLab" alt="last commit" />
+   <a href="https://github.com/cophilot/OrbitLab/commits/master">
+       <img src="https://img.shields.io/github/last-commit/cophilot/OrbitLab" alt="last commit" />
    </a>
 </div> -->
 
@@ -29,6 +29,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ---
 
-by [Philipp B.](https://github.com/phil1436)
+by [Philipp B.](https://github.com/cophilot)
 
 <!-- ng deploy --base-href=https://orbitlab.philipp-bonin.com --cname=orbitlab.philipp-bonin.com -->
