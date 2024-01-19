@@ -1,35 +1,8 @@
-<svg
-  [attr.width]="getWidth()"
-  [attr.height]="getHeight()"
+<img
+  src="assets/arrow.svg"
   class="arrow"
-  [style.top.px]="getScreenPosition()[0]"
-  [style.left.px]="getScreenPosition()[1]"
->
-  <path
-    [attr.d]="getHeadPath()[0]"
-    style="
-      stroke: rgb(230, 247, 3);
-      stroke-width: 5px;
-      fill: none;
-      marker-end: url(#arrow);
-    "
-  />
-  <path
-    [attr.d]="getHeadPath()[1]"
-    style="
-      stroke: rgb(230, 247, 3);
-      stroke-width: 5px;
-      fill: none;
-      marker-end: url(#arrow);
-    "
-  />
-  <path
-    [attr.d]="getPath()"
-    style="
-      stroke: rgb(230, 247, 3);
-      stroke-width: 2px;
-      fill: none;
-      marker-end: url(#arrow);
-    "
-  />
-</svg>
+  [style.rotate.deg]="getAngle()"
+  [style.top.px]="getScreenCoordinates()[1]"
+  [style.left.px]="getScreenCoordinates()[0]"
+  [style.width.px]="getWidth()"
+/>

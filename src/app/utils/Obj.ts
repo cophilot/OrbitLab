@@ -44,7 +44,6 @@ export class Obj {
     let force = (this.weight * object2.weight) / (distance * distance);
     let forceX = force * ((object2.x - this.x) / distance);
     let forceY = force * ((object2.y - this.y) / distance);
-    console.log(forceX, forceY);
     this.velocity.x += forceX / this.weight;
     this.velocity.y += forceY / this.weight;
   }

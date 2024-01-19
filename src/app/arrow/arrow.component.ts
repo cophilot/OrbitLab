@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import Vector from 'src/types/Vector';
 
 @Component({
   selector: 'app-arrow',
@@ -11,83 +12,31 @@ export class ArrowComponent {
   @Input() endX: number = 0;
   @Input() endY: number = 0;
 
-  getPath(): string {
-    let x1 = 0;
-    let x2 = 0;
-    let y1 = 0;
-    let y2 = 0;
-
-    if (this.startX <= this.endX && this.startY <= this.endY) {
-      y1 = this.getHeight();
-      x2 = this.getWidth();
-    }
-    if (this.startX <= this.endX && this.startY >= this.endY) {
-      y2 = this.getHeight();
-      x2 = this.getWidth();
-    }
-    if (this.startX >= this.endX && this.startY >= this.endY) {
-      y2 = this.getHeight();
-      x1 = this.getWidth();
-    }
-    if (this.startX >= this.endX && this.startY <= this.endY) {
-      y1 = this.getHeight();
-      x1 = this.getWidth();
-    }
-
-    return `M ${x1} ${y1} L ${x2} ${y2}`;
-  }
-
-  getHeadPath(): string[] {
-    if (this.startX <= this.endX && this.startY <= this.endY) {
-      return [
-        `M ${this.getWidth()} ${0} L ${this.getWidth()} ${15}`,
-        `M ${this.getWidth() - 15} ${0} L ${this.getWidth()} ${0}`,
-      ];
-    }
-    if (this.startX <= this.endX && this.startY >= this.endY) {
-      return [
-        `M ${this.getWidth()} ${
-          this.getHeight() - 15
-        } L ${this.getWidth()} ${this.getHeight()}`,
-        `M ${
-          this.getWidth() - 15
-        } ${this.getHeight()} L ${this.getWidth()} ${this.getHeight()}`,
-      ];
-    }
-    if (this.startX >= this.endX && this.startY >= this.endY) {
-      return [
-        `M ${0} ${this.getHeight() - 15} L ${0} ${this.getHeight()}`,
-        `M ${0} ${this.getHeight()} L ${15} ${this.getHeight()}`,
-      ];
-    }
-    if (this.startX >= this.endX && this.startY <= this.endY) {
-      return [`M ${0} ${0} L ${0} ${15}`, `M ${0} ${0} L ${15} ${0}`];
-    }
-    return [];
-  }
+  angleBefore = 0;
 
   getWidth(): number {
-    let width = Math.abs(this.startX - this.endX);
-    if (width < 2) {
-      return 2;
-    }
-    return width;
+    const length = Math.sqrt(
+      Math.pow(this.endX - this.startX, 2) +
+        Math.pow(this.endY - this.startY, 2)
+    );
+    return Math.sqrt(0.5) * length;
   }
 
-  getHeight(): number {
-    let height = Math.abs(this.startY - this.endY);
-    if (height < 2) {
-      return 2;
+  getAngle(): number {
+    const v = new Vector(this.startX, this.startY, this.endX, this.endY);
+    let a = v.deg(new Vector(0, 0, -1, 1));
+    a = (a * 180) / Math.PI;
+    /*     if (a < 180) {
+      a = 360 - a;
     }
-    return height;
+    a = 360 - a;
+    */
+    return a;
   }
 
-  getScreenPosition(): number[] {
-    let top = Math.max(this.startY, this.endY);
-    let left = Math.min(this.startX, this.endX);
-
-    top = window.innerHeight / 2 - top;
-    left += window.innerWidth / 2;
-    return [top, left];
+  getScreenCoordinates(): number[] {
+    const x = window.innerWidth / 2 + this.endX;
+    const y = window.innerHeight / 2 - this.endY;
+    return [x, y];
   }
 }

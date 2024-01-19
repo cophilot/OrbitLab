@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SettingsService } from '../../service/settings.service';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
+import {
+  getEarthMoonExample,
+  getPlutoCharonExample,
+} from '../../../data/examples';
 
 @Component({
   selector: 'app-settings',
@@ -43,6 +47,24 @@ export class SettingsComponent {
       };
     };
     input.click();
+  }
+
+  importExample(example: string) {
+    let objects: any[] = [];
+
+    switch (example.toLowerCase()) {
+      case 'earth-moon':
+        objects = getEarthMoonExample();
+        break;
+      case 'pluto-charon':
+        objects = getPlutoCharonExample();
+        break;
+      default:
+        break;
+    }
+
+    this.localStorageService.saveObjects(objects);
+    window.location.reload();
   }
 
   toggleCoordinateSystem() {

@@ -7,11 +7,33 @@
 
 <div class="settings">
   <h1>OrbitLab Settings</h1>
+  <div class="row">
+    <p class="label" style="font-size: 14px; width: 600px">
+      <i>
+        <b>Disclaimer</b>: This is <b>not</b> a scientific software. It is a
+        visualization tool for educational purposes only and is not
+        scientifically accurate.
+      </i>
+    </p>
+  </div>
   <h2>View</h2>
   <div class="row">
     <p class="label">Show coordinate system</p>
     <button class="actionButton" (click)="toggleCoordinateSystem()">
       {{ getSettings().getShowCoordinateSystem() ? "ON" : "OFF" }}
+    </button>
+  </div>
+  <h2>Examples</h2>
+  <div class="row">
+    <p class="label">Earth & Moon</p>
+    <button class="actionButton" (click)="importExample('earth-moon')">
+      Load
+    </button>
+  </div>
+  <div class="row">
+    <p class="label">Pluto & Charon</p>
+    <button class="actionButton" (click)="importExample('pluto-charon')">
+      Load
     </button>
   </div>
   <h2>Import & Export</h2>
@@ -31,8 +53,14 @@
   <h2>Contact</h2>
   <div class="row">
     <p class="label">Report an issue</p>
-    <a href="mailto:philxsb@gmail.com" class="actionLink">Report</a>
+    <a href="mailto:info@philipp-bonin.com" class="actionLink">Report</a>
   </div>
+  <div class="row">
+    <p class="label">
+      <a href="https://github.com/cophilot"> by Philipp B. </a>
+    </p>
+  </div>
+
   <div class="row">
     <p class="label"></p>
     <button
