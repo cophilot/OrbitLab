@@ -1,4 +1,4 @@
 <div class="system" (click)="unselectObject()">
-  <div class="xBar"></div>
-  <div class="yBar"></div>
+  <div class="xBar" *ngFor="let x of xBars" [style.left.px]="x"></div>
+  <div class="yBar" *ngFor="let y of yBars" [style.top.px]="y"></div>
 </div>
