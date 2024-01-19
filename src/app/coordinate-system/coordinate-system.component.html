@@ -1,4 +1,12 @@
 <div class="system" (click)="unselectObject()">
-  <div class="xBar" *ngFor="let x of xBars" [style.left.px]="x"></div>
-  <div class="yBar" *ngFor="let y of yBars" [style.top.px]="y"></div>
+  <div
+    [class]="'xBar ' + (i == 0 ? 'primX' : '')"
+    *ngFor="let x of xBars; index as i"
+    [style.left.px]="x"
+  ></div>
+  <div
+    [class]="'yBar ' + (i == 0 ? 'primY' : '')"
+    *ngFor="let y of yBars; index as i"
+    [style.top.px]="y"
+  ></div>
 </div>
