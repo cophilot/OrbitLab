@@ -6,6 +6,7 @@ import {
   getEarthMoonExample,
   getPlutoCharonExample,
 } from '../../../data/examples';
+import { CoordinateSystemComponent } from 'src/app/coordinate-system/coordinate-system.component';
 
 @Component({
   selector: 'app-settings',
@@ -13,14 +14,10 @@ import {
   styleUrls: ['./settings.component.sass'],
 })
 export class SettingsComponent {
-  constructor(
-    private router: Router,
-    private localStorageService: LocalStorageService,
-    private settingsService: SettingsService
-  ) {}
+  constructor(private router: Router) {}
 
   exportObjects() {
-    const objects = this.localStorageService.getObjects();
+    const objects = LocalStorageService.getObjects();
     const dataStr =
       'data:text/json;charset=utf-8,' +
       encodeURIComponent(JSON.stringify(objects));
@@ -42,7 +39,7 @@ export class SettingsComponent {
       reader.readAsText(file);
       reader.onload = () => {
         const objects = JSON.parse(reader.result as string);
-        this.localStorageService.saveObjects(objects);
+        LocalStorageService.saveObjects(objects);
         window.location.reload();
       };
     };
@@ -63,24 +60,28 @@ export class SettingsComponent {
         break;
     }
 
-    this.localStorageService.saveObjects(objects);
+    LocalStorageService.saveObjects(objects);
     window.location.reload();
   }
 
   toggleCoordinateSystem() {
-    this.settingsService.toggleCoordinateSystem();
+    SettingsService.toggleCoordinateSystem();
   }
 
   getSettings() {
-    return this.settingsService;
+    return SettingsService;
   }
 
   clearLocalStorage() {
-    this.localStorageService.clear();
+    LocalStorageService.clear();
     alert('Local storage cleared!');
   }
 
   goToHome() {
     this.router.navigate(['']);
+  }
+
+  getCoordinateSystem() {
+    return CoordinateSystemComponent;
   }
 }

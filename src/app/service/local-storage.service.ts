@@ -5,13 +5,11 @@ import { Obj } from '../utils/Obj';
   providedIn: 'root',
 })
 export class LocalStorageService {
-  constructor() {}
-
-  saveObjects(objects: Obj[]) {
+  static saveObjects(objects: Obj[]) {
     localStorage.setItem('objects', JSON.stringify(objects));
   }
 
-  getObjects(): Obj[] {
+  static getObjects(): Obj[] {
     const objects = localStorage.getItem('objects');
     if (objects) {
       let objectArray = JSON.parse(objects);
@@ -24,7 +22,7 @@ export class LocalStorageService {
     return [];
   }
 
-  getSettings() {
+  static getSettings() {
     const settings = localStorage.getItem('settings');
     if (settings) {
       return JSON.parse(settings);
@@ -32,11 +30,23 @@ export class LocalStorageService {
     return undefined;
   }
 
-  saveSettings(settings: any) {
+  static saveSettings(settings: any) {
     localStorage.setItem('settings', JSON.stringify(settings));
   }
 
-  clear() {
+  static clear() {
     localStorage.clear();
+  }
+
+  static set(key: string, value: any) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  static get(key: string) {
+    const value = localStorage.getItem(key);
+    if (value) {
+      return JSON.parse(value);
+    }
+    return undefined;
   }
 }

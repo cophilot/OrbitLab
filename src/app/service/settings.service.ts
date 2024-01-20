@@ -5,25 +5,33 @@ import { LocalStorageService } from './local-storage.service';
   providedIn: 'root',
 })
 export class SettingsService {
-  showCoordinateSystem = true;
+  static isInit = false;
 
-  constructor(private localStorageService: LocalStorageService) {
-    const settings = this.localStorageService.getSettings();
+  static showCoordinateSystem = true;
+
+  static init() {
+    if (this.isInit) {
+      return;
+    }
+    const settings = LocalStorageService.getSettings();
     if (settings) {
       this.showCoordinateSystem = settings.showCoordinateSystem;
     }
+    this.isInit = true;
   }
 
-  toggleCoordinateSystem() {
+  static toggleCoordinateSystem() {
+    this.init();
     this.showCoordinateSystem = !this.showCoordinateSystem;
     this.saveSettings();
   }
 
-  getShowCoordinateSystem() {
+  static getShowCoordinateSystem() {
+    this.init();
     return this.showCoordinateSystem;
   }
 
-  saveSettings() {
-    this.localStorageService.saveSettings(this);
+  static saveSettings() {
+    LocalStorageService.saveSettings(this);
   }
 }

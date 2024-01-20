@@ -17,7 +17,7 @@
     </p>
   </div>
   <h2>View</h2>
-  <div class="row">
+  <!--   <div class="row">
     <p class="label">Velocity Arrow</p>
     <button class="actionButton" (click)="toggleCoordinateSystem()">
       {{ getSettings().getShowCoordinateSystem() ? "ON" : "OFF" }}
@@ -28,11 +28,18 @@
     <button class="actionButton" (click)="toggleCoordinateSystem()">
       {{ getSettings().getShowCoordinateSystem() ? "ON" : "OFF" }}
     </button>
-  </div>
+  </div> -->
   <div class="row">
     <p class="label">Grid Size</p>
-    <button class="actionButton" (click)="toggleCoordinateSystem()">
-      {{ getSettings().getShowCoordinateSystem() ? "ON" : "OFF" }}
+    <button
+      class="actionButton"
+      (click)="getCoordinateSystem().toggleGridSize()"
+    >
+      {{
+        getCoordinateSystem().gridGap == -1
+          ? "OFF"
+          : getCoordinateSystem().gridGap
+      }}
     </button>
   </div>
   <h2>Examples</h2>

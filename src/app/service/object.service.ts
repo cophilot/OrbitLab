@@ -11,13 +11,13 @@ export class ObjectService {
 
   private selectedObject: Obj | null = null;
 
-  constructor(private localStorageService: LocalStorageService) {
-    this.objects = this.localStorageService.getObjects();
+  constructor() {
+    this.objects = LocalStorageService.getObjects();
     Obj.idCounter = this.objects.length;
   }
 
   reset(): void {
-    this.objects = this.localStorageService.getObjects();
+    this.objects = LocalStorageService.getObjects();
   }
 
   getObjects(): Obj[] {
@@ -36,7 +36,7 @@ export class ObjectService {
     this.objects.push(
       new Obj(name, startX, startY, radius, weight, velocity, color)
     );
-    this.localStorageService.saveObjects(this.objects);
+    LocalStorageService.saveObjects(this.objects);
   }
 
   addObject(object: Obj): void {
@@ -45,7 +45,7 @@ export class ObjectService {
 
   deleteObject(id: number): void {
     this.objects = this.objects.filter((object) => object.id !== id);
-    this.localStorageService.saveObjects(this.objects);
+    LocalStorageService.saveObjects(this.objects);
   }
 
   getSelectedObject(): number {

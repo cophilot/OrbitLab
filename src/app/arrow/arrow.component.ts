@@ -7,6 +7,8 @@ import Vector from 'src/types/Vector';
   styleUrls: ['./arrow.component.sass'],
 })
 export class ArrowComponent {
+  static visible = true;
+
   @Input() startX: number = 0;
   @Input() startY: number = 0;
   @Input() endX: number = 0;
@@ -38,5 +40,9 @@ export class ArrowComponent {
     const x = window.innerWidth / 2 + this.endX;
     const y = window.innerHeight / 2 - this.endY;
     return [x, y];
+  }
+
+  isVisible(): boolean {
+    return ArrowComponent.visible;
   }
 }

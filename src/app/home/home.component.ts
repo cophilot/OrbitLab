@@ -11,11 +11,7 @@ import { SettingsService } from '../service/settings.service';
 export class HomeComponent {
   showAddObjectForm = false;
 
-  constructor(
-    private objectService: ObjectService,
-    private router: Router,
-    private settingsService: SettingsService
-  ) {}
+  constructor(private objectService: ObjectService, private router: Router) {}
 
   getObjectService() {
     return this.objectService;
@@ -29,6 +25,6 @@ export class HomeComponent {
     this.router.navigate(['settings']);
   }
   getSettingsService() {
-    return this.settingsService;
+    return SettingsService;
   }
 }
