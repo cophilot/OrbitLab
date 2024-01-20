@@ -21,6 +21,10 @@
 
 ---
 
+**Disclaimer**: This is **not** a scientific software. It is a visualization tool for educational purposes only and is not scientifically accurate.
+
+---
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
 
 ---
