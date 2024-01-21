@@ -2,14 +2,18 @@
   <p>
     <b>{{ getObjectService().getSelectedObjectAsObject().name }}</b>
   </p>
-  <p>{{ "X: " + getObjectService().getSelectedObjectAsObject().x }}</p>
-  <p>{{ "Y: " + getObjectService().getSelectedObjectAsObject().y }}</p>
+  <p>
+    {{ "X: " + trimNumber(getObjectService().getSelectedObjectAsObject().x) }}
+  </p>
+  <p>
+    {{ "Y: " + trimNumber(getObjectService().getSelectedObjectAsObject().y) }}
+  </p>
   <p>
     {{
       "Velocity: (" +
-        getObjectService().getSelectedObjectAsObject().velocity.x +
+        trimNumber(getObjectService().getSelectedObjectAsObject().velocity.x) +
         ";" +
-        getObjectService().getSelectedObjectAsObject().velocity.y +
+        trimNumber(getObjectService().getSelectedObjectAsObject().velocity.y) +
         ")"
     }}
   </p>

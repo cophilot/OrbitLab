@@ -1,10 +1,6 @@
 export const getEarthMoonExample = (): any[] => {
   return [
     {
-      moveVectorX: 0,
-      moveVectorY: 0,
-      history: [{ x: 0, y: 0 }],
-      id: 6,
       name: 'Earth',
       x: 0,
       y: 0,
@@ -14,10 +10,6 @@ export const getEarthMoonExample = (): any[] => {
       weight: 1000000,
     },
     {
-      moveVectorX: 0,
-      moveVectorY: 0,
-      history: [{ x: 200, y: 200 }],
-      id: 7,
       name: 'Moon',
       x: 200,
       y: 200,
@@ -32,10 +24,6 @@ export const getEarthMoonExample = (): any[] => {
 export const getPlutoCharonExample = (): any[] => {
   return [
     {
-      moveVectorX: 0,
-      moveVectorY: 0,
-      history: [{ x: 0, y: 0 }],
-      id: 6,
       name: 'Pluto',
       x: 0,
       y: 0,
@@ -46,10 +34,6 @@ export const getPlutoCharonExample = (): any[] => {
     },
 
     {
-      moveVectorX: 0,
-      moveVectorY: 0,
-      history: [{ x: 200, y: 200 }],
-      id: 7,
       name: 'Charon',
       x: 200,
       y: 200,

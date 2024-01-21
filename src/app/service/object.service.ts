@@ -41,6 +41,13 @@ export class ObjectService {
 
   addObject(object: Obj): void {
     this.objects.push(object);
+    LocalStorageService.saveObjects(this.objects);
+  }
+
+  addObjectFromJSON(json: any): void {
+    const object = Obj.getObjFromJson(json);
+    this.objects.push(object);
+    LocalStorageService.saveObjects(this.objects);
   }
 
   deleteObject(id: number): void {
@@ -54,6 +61,7 @@ export class ObjectService {
     }
     return -1;
   }
+
   getSelectedObjectAsObject(): any {
     return this.selectedObject;
   }
@@ -67,5 +75,27 @@ export class ObjectService {
       this.deleteObject(this.selectedObject.id);
     }
     this.selectedObject = null;
+  }
+
+  getObjectsForExport(): any[] {
+    return this.objects.map((object) => {
+      return {
+        name: object.name,
+        x: object.x,
+        y: object.y,
+        radius: object.radius,
+        color: object.color,
+        weight: object.weight,
+        velocity: {
+          x: object.velocity.x,
+          y: object.velocity.y,
+        },
+      };
+    });
+  }
+
+  empty(): void {
+    this.objects = [];
+    LocalStorageService.saveObjects(this.objects);
   }
 }

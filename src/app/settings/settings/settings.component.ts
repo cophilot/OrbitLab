@@ -7,6 +7,7 @@ import {
   getPlutoCharonExample,
 } from '../../../data/examples';
 import { CoordinateSystemComponent } from 'src/app/coordinate-system/coordinate-system.component';
+import { ObjectService } from 'src/app/service/object.service';
 
 @Component({
   selector: 'app-settings',
@@ -14,10 +15,10 @@ import { CoordinateSystemComponent } from 'src/app/coordinate-system/coordinate-
   styleUrls: ['./settings.component.sass'],
 })
 export class SettingsComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private objectService: ObjectService) {}
 
   exportObjects() {
-    const objects = LocalStorageService.getObjects();
+    const objects = this.objectService.getObjectsForExport();
     const dataStr =
       'data:text/json;charset=utf-8,' +
       encodeURIComponent(JSON.stringify(objects));
@@ -38,9 +39,10 @@ export class SettingsComponent {
       const reader = new FileReader();
       reader.readAsText(file);
       reader.onload = () => {
-        const objects = JSON.parse(reader.result as string);
-        LocalStorageService.saveObjects(objects);
-        window.location.reload();
+        const objects: any[] = JSON.parse(reader.result as string);
+        objects.forEach((object) => {
+          this.objectService.addObjectFromJSON(object);
+        });
       };
     };
     input.click();
@@ -59,9 +61,10 @@ export class SettingsComponent {
       default:
         break;
     }
-
-    LocalStorageService.saveObjects(objects);
-    window.location.reload();
+    this.objectService.empty();
+    objects.forEach((object) => {
+      this.objectService.addObjectFromJSON(object);
+    });
   }
 
   getSettings() {

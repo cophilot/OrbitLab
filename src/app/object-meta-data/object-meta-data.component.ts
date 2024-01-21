@@ -12,4 +12,8 @@ export class ObjectMetaDataComponent {
   getObjectService() {
     return this.objectService;
   }
+
+  trimNumber(number: number): string {
+    return number.toFixed(1);
+  }
 }
