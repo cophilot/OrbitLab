@@ -1,5 +1,7 @@
 <div class="container" *ngIf="getObjectService().getSelectedObject() != -1">
-  <p>{{ getObjectService().getSelectedObjectAsObject().name }}</p>
+  <p>
+    <b>{{ getObjectService().getSelectedObjectAsObject().name }}</b>
+  </p>
   <p>{{ "X: " + getObjectService().getSelectedObjectAsObject().x }}</p>
   <p>{{ "Y: " + getObjectService().getSelectedObjectAsObject().y }}</p>
   <p>

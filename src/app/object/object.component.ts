@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Obj } from '../utils/Obj';
 import { ObjectService } from '../service/object.service';
+import { SettingsService } from '../service/settings.service';
 
 @Component({
   selector: 'app-object',
@@ -22,5 +23,9 @@ export class ObjectComponent {
       return;
     }
     this.objectService.setSelectedObject(this.object);
+  }
+
+  areObjectNamesVisible() {
+    return SettingsService.areObjectNamesVisible();
   }
 }

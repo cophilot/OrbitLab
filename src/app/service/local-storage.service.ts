@@ -23,7 +23,7 @@ export class LocalStorageService {
   }
 
   static getSettings() {
-    const settings = localStorage.getItem('settings');
+    const settings = localStorage.getItem('orbitlab-settings');
     if (settings) {
       return JSON.parse(settings);
     }
@@ -31,7 +31,7 @@ export class LocalStorageService {
   }
 
   static saveSettings(settings: any) {
-    localStorage.setItem('settings', JSON.stringify(settings));
+    localStorage.setItem('orbitlab-settings', JSON.stringify(settings));
   }
 
   static clear() {

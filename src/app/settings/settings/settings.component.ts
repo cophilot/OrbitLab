@@ -64,10 +64,6 @@ export class SettingsComponent {
     window.location.reload();
   }
 
-  toggleCoordinateSystem() {
-    SettingsService.toggleCoordinateSystem();
-  }
-
   getSettings() {
     return SettingsService;
   }
@@ -79,9 +75,5 @@ export class SettingsComponent {
 
   goToHome() {
     this.router.navigate(['']);
-  }
-
-  getCoordinateSystem() {
-    return CoordinateSystemComponent;
   }
 }

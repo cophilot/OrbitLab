@@ -17,28 +17,29 @@
     </p>
   </div>
   <h2>View</h2>
-  <!--   <div class="row">
+  <div class="row">
     <p class="label">Velocity Arrow</p>
-    <button class="actionButton" (click)="toggleCoordinateSystem()">
-      {{ getSettings().getShowCoordinateSystem() ? "ON" : "OFF" }}
+    <button
+      class="actionButton"
+      (click)="getSettings().toggleVelocityArrowVisibility()"
+    >
+      {{ getSettings().isVelocityArrowVisible() ? "ON" : "OFF" }}
     </button>
   </div>
   <div class="row">
     <p class="label">Object Name</p>
-    <button class="actionButton" (click)="toggleCoordinateSystem()">
-      {{ getSettings().getShowCoordinateSystem() ? "ON" : "OFF" }}
-    </button>
-  </div> -->
-  <div class="row">
-    <p class="label">Grid Size</p>
     <button
       class="actionButton"
-      (click)="getCoordinateSystem().toggleGridSize()"
+      (click)="getSettings().toggleObjectNamesVisibility()"
     >
+      {{ getSettings().areObjectNamesVisible() ? "ON" : "OFF" }}
+    </button>
+  </div>
+  <div class="row">
+    <p class="label">Grid Size</p>
+    <button class="actionButton" (click)="getSettings().toggleGridSize()">
       {{
-        getCoordinateSystem().gridGap == -1
-          ? "OFF"
-          : getCoordinateSystem().gridGap
+        getSettings().getGridSize() == -1 ? "OFF" : getSettings().getGridSize()
       }}
     </button>
   </div>

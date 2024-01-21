@@ -8,16 +8,12 @@
   (click)="selectObject()"
 >
   <p
-    class="name"
+    [class]="
+      'name' +
+      (getObjectService().getSelectedObject() == object.id ? 'Selected' : '')
+    "
     [style.top.px]="object.radius * 2 - 20"
-    *ngIf="getObjectService().getSelectedObject() != object.id"
-  >
-    {{ object.name }}
-  </p>
-  <p
-    class="nameSelected"
-    [style.top.px]="object.radius * 2 - 20"
-    *ngIf="getObjectService().getSelectedObject() == object.id"
+    *ngIf="areObjectNamesVisible()"
   >
     {{ object.name }}
   </p>
@@ -28,15 +24,4 @@
     [endX]="object.x + object.velocity.x"
     [endY]="object.y + object.velocity.y"
   ></app-arrow>
-  <!-- <app-arrow
-    *ngIf="object.velocity.length() != 0"
-    [startX]="object.getScreenCoordinates()[0] + object.radius"
-    [startY]="object.getScreenCoordinates()[1] + object.radius"
-    [endX]="
-      object.getScreenCoordinates()[0] + object.radius + object.velocity.x
-    "
-    [endY]="
-      object.getScreenCoordinates()[1] + object.radius + object.velocity.y
-    "
-  ></app-arrow> -->
 </div>

@@ -13,6 +13,7 @@ import { ArrowComponent } from './arrow/arrow.component';
 import { PlayBarComponent } from './play-bar/play-bar.component';
 import { SettingsComponent } from './settings/settings/settings.component';
 import { HomeComponent } from './home/home.component';
+import { CookieMessageComponent } from './cookie-message/cookie-message.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HomeComponent } from './home/home.component';
     PlayBarComponent,
     SettingsComponent,
     HomeComponent,
+    CookieMessageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }], // Add HashLocationStrategy as a provider

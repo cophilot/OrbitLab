@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import Vector from 'src/types/Vector';
+import { SettingsService } from '../service/settings.service';
 
 @Component({
   selector: 'app-arrow',
@@ -7,8 +8,6 @@ import Vector from 'src/types/Vector';
   styleUrls: ['./arrow.component.sass'],
 })
 export class ArrowComponent {
-  static visible = true;
-
   @Input() startX: number = 0;
   @Input() startY: number = 0;
   @Input() endX: number = 0;
@@ -43,6 +42,6 @@ export class ArrowComponent {
   }
 
   isVisible(): boolean {
-    return ArrowComponent.visible;
+    return SettingsService.isVelocityArrowVisible();
   }
 }
