@@ -25,13 +25,17 @@ export class ArrowComponent {
 
   getAngle(): number {
     const v = new Vector(this.startX, this.startY, this.endX, this.endY);
-    let a = v.deg(new Vector(0, 0, -1, 1));
-    a = (a * 180) / Math.PI;
-    /*     if (a < 180) {
-      a = 360 - a;
+    let a = v.deg(new Vector(0, 0, -10, 10));
+    // convert to degrees
+    //a = (a * 180) / Math.PI;
+
+    if (a >= 360) {
+      a -= 360;
     }
-    a = 360 - a;
-    */
+    if (a < 0) {
+      a += 360;
+    }
+
     return a;
   }
 

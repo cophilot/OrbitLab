@@ -56,7 +56,27 @@ class Vector {
   }
 
   deg(v: Vector): number {
-    return Math.acos(this.dot(v) / (this.length() * v.length()));
+    // calculate the angle between two vectors clockwise
+    const dot = this.dot(v);
+    const length = this.length() * v.length();
+    let angle = Math.acos(dot / length);
+    // convert to degrees
+    angle = (angle * 180) / Math.PI;
+
+    // check if the angle is clockwise or counterclockwise
+    const cross = this.cross(v);
+    if (cross < 0) {
+      angle = 360 - angle;
+    }
+
+    return angle;
+  }
+
+  cross(v: Vector): number {
+    return (
+      (this.end.x - this.start.x) * (v.end.y - v.start.y) -
+      (this.end.y - this.start.y) * (v.end.x - v.start.x)
+    );
   }
 
   static getFromJson(json: any): Vector {
