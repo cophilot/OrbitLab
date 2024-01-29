@@ -4,7 +4,9 @@ import { SettingsService } from '../../service/settings.service';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import {
   getEarthMoonExample,
+  getEllipticalOrbit,
   getPlutoCharonExample,
+  getThreeBody,
 } from '../../../data/examples';
 import { CoordinateSystemComponent } from 'src/app/coordinate-system/coordinate-system.component';
 import { ObjectService } from 'src/app/service/object.service';
@@ -57,6 +59,12 @@ export class SettingsComponent {
         break;
       case 'pluto-charon':
         objects = getPlutoCharonExample();
+        break;
+      case 'elliptical-orbit':
+        objects = getEllipticalOrbit();
+        break;
+      case 'three-body':
+        objects = getThreeBody();
         break;
       default:
         break;

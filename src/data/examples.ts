@@ -44,3 +44,58 @@ export const getPlutoCharonExample = (): any[] => {
     },
   ];
 };
+
+export const getEllipticalOrbit = (): any[] => {
+  return [
+    {
+      name: 'Sun',
+      x: 0,
+      y: 0,
+      radius: 50,
+      color: '#fffb00',
+      velocity: { x: 0, y: 0 },
+      weight: 1000000,
+    },
+    {
+      name: 'Pluto',
+      x: 200,
+      y: 200,
+      radius: 7,
+      color: '#6d6d6d',
+      velocity: { x: 20, y: -60 },
+      weight: 1000,
+    },
+  ];
+};
+
+export const getThreeBody = (): any[] => {
+  return [
+    {
+      name: 'Body1',
+      x: 0,
+      y: 200,
+      radius: 20,
+      color: 'red',
+      velocity: { x: 0, y: -20 },
+      weight: 100000,
+    },
+    {
+      name: 'Body2',
+      x: -300,
+      y: 200,
+      radius: 20,
+      color: 'blue',
+      velocity: { x: 0, y: 20 },
+      weight: 100000,
+    },
+    {
+      name: 'Body3',
+      x: 200,
+      y: 400,
+      radius: 20,
+      color: 'yellow',
+      velocity: { x: -50, y: -10 },
+      weight: 100000,
+    },
+  ];
+};
