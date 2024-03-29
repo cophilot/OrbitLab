@@ -2,15 +2,47 @@
   <div
     *ngFor="let x of getXBars(); index as i"
     [class]="'xBar ' + (i == 0 ? 'primX' : '')"
-    [style.left.px]="scale(x)"
+    [style.left.px]="x"
   ></div>
   <div
     *ngFor="let y of getYBars(); index as i"
     [class]="'yBar ' + (i == 0 ? 'primY' : '')"
-    [style.top.px]="scale(y)"
+    [style.top.px]="y"
   ></div>
   <div class="indicatorX1"></div>
   <div class="indicatorX2"></div>
   <div class="indicatorY1"></div>
   <div class="indicatorY2"></div>
+  <div
+    class="measure-band-x"
+    [style.left.px]="innerWidth() / 2 + scale(100)"
+    [style.top.px]="innerHeight() / 2 - 10"
+  >
+    <div class="end"></div>
+    <p>100</p>
+  </div>
+  <div
+    class="measure-band-x"
+    [style.left.px]="innerWidth() / 2 + scale(200) - 2"
+    [style.top.px]="innerHeight() / 2 - 10"
+  >
+    <div class="end"></div>
+    <p>200</p>
+  </div>
+  <div
+    class="measure-band-y"
+    [style.top.px]="innerHeight() / 2 - scale(100) - 25"
+    [style.left.px]="innerWidth() / 2 - 10"
+  >
+    <div class="end"></div>
+    <p>100</p>
+  </div>
+  <div
+    class="measure-band-y"
+    [style.top.px]="innerHeight() / 2 - scale(200) - 25"
+    [style.left.px]="innerWidth() / 2 - 10"
+  >
+    <div class="end"></div>
+    <p>200</p>
+  </div>
 </div>

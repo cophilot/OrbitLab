@@ -92,11 +92,15 @@ export class PlayBarComponent {
     return this.moveService.isPlaying;
   }
 
-  zoomOut() {
-    ScaleService.zoomOut();
+  zoomOut(fast = false) {
+    ScaleService.zoomOut(fast);
   }
 
-  zoomIn() {
-    ScaleService.zoomIn();
+  zoomIn(fast = false) {
+    ScaleService.zoomIn(fast);
+  }
+
+  getZoomFactor() {
+    return ScaleService.currentScale;
   }
 }

@@ -28,8 +28,9 @@ export class CoordinateSystemComponent {
     this.xBars.push(middle);
 
     let offset = 0;
+    let gridSize = ScaleService.scale(SettingsService.getGridSize());
     while (middle - offset > 0) {
-      offset += SettingsService.getGridSize();
+      offset += gridSize;
       this.xBars.push(middle + offset);
       this.xBars.push(middle - offset);
     }
@@ -39,7 +40,7 @@ export class CoordinateSystemComponent {
 
     offset = 0;
     while (middle - offset > 0) {
-      offset += SettingsService.getGridSize();
+      offset += gridSize;
       this.yBars.push(middle + offset);
       this.yBars.push(middle - offset);
     }
@@ -66,7 +67,18 @@ export class CoordinateSystemComponent {
   }
 
   scale(scale: number) {
-    return scale;
-    //return ScaleService.scale(scale);
+    return ScaleService.scale(scale);
+  }
+
+  floor(value: number) {
+    return Math.floor(value);
+  }
+
+  innerWidth() {
+    return window.innerWidth;
+  }
+
+  innerHeight() {
+    return window.innerHeight;
   }
 }
