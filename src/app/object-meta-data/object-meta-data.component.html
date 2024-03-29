@@ -1,9 +1,15 @@
-<div class="container" *ngIf="getObjectService().getSelectedObject() != -1">
+<div
+  class="container glass"
+  *ngIf="getObjectService().getSelectedObject() != -1"
+>
   <div class="row">
     <b>{{ getObjectService().getSelectedObjectAsObject().name }}</b>
     <div class="frow">
       <app-my-icon name="bi bi-pencil"></app-my-icon>
-      <app-my-icon name="bi bi-trash"></app-my-icon>
+      <app-my-icon
+        name="bi bi-trash"
+        (click)="getObjectService().deleteSelectedObject()"
+      ></app-my-icon>
     </div>
   </div>
   <div class="row">

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MoveService } from '../service/move.service';
 import { ObjectService } from '../service/object.service';
 import { CdkDrag } from '@angular/cdk/drag-drop';
@@ -23,10 +23,18 @@ export class PlayBarComponent {
   ) {}
 
   nextStep() {
+    this.pauseIfPlaying();
     this.moveService.nextStep();
   }
   prevStep() {
+    this.pauseIfPlaying();
     this.moveService.prevStep();
+  }
+
+  pauseIfPlaying() {
+    if (this.isPlaying()) {
+      this.pause();
+    }
   }
 
   toggleSpeed() {
@@ -49,6 +57,14 @@ export class PlayBarComponent {
     }
 
     this.moveService.setSpeed(1000 / this.playSpeed);
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    // Handle keyboard events here
+    if (event.key === ' ') {
+      this.togglePlayPause();
+    }
   }
 
   togglePlayPause() {

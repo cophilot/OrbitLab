@@ -1,10 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Obj } from '../utils/Obj';
+import { CookieMessageComponent } from '../cookie-message/cookie-message.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalStorageService {
+  static areAllCookiesAccepted = false;
+
+  static init() {
+    const cookiesAccepted = localStorage.getItem('orbitlab-cookies-accepted');
+    if (cookiesAccepted == null) {
+      return;
+    }
+    LocalStorageService.areAllCookiesAccepted = JSON.parse(cookiesAccepted);
+    CookieMessageComponent.hide();
+  }
+
+  static acceptAllCookies() {
+    LocalStorageService.areAllCookiesAccepted = true;
+    localStorage.setItem('orbitlab-cookies-accepted', 'true');
+  }
+
+  static acceptEssentialCookies() {
+    LocalStorageService.areAllCookiesAccepted = false;
+    localStorage.setItem('orbitlab-cookies-accepted', 'false');
+  }
+
   static saveObjects(objects: Obj[]) {
     localStorage.setItem('objects', JSON.stringify(objects));
   }

@@ -17,22 +17,17 @@
   *ngIf="showAddObjectForm"
   (closeForm)="closeAddObjectForm()"
 ></app-add-object-form>
-
-<button
-  class="interactButton myButton"
+<app-my-icon
+  class="glass"
+  name="+"
+  [textIcon]="true"
+  [border]="true"
+  [size]="27"
   *ngIf="!showAddObjectForm"
   (click)="showAddObjectForm = true"
-  [style.left.px]="10"
->
-  +
-</button>
-<button
-  class="interactButton myButton"
-  (click)="getObjectService().deleteSelectedObject()"
-  [style.left.px]="60"
-  *ngIf="getObjectService().getSelectedObject() != -1"
->
-  -
-</button>
-<app-play-bar class="playBar"></app-play-bar>
+  [style.right.px]="10"
+  [style.bottom.px]="10"
+  [style.position]="'fixed'"
+></app-my-icon>
+<app-play-bar></app-play-bar>
 <app-object-meta-data></app-object-meta-data>

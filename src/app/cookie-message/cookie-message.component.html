@@ -1,1 +1,14 @@
-<p>cookie-message works!</p>
+<div class="cookie-message glass fcol" *ngIf="isVisible()">
+  <p>
+    This website uses cookies to ensure you get the best experience
+    <i class="bi bi-cookie"></i>
+  </p>
+  <div class="frow">
+    <button class="cookie-accept" (click)="acceptEssentialCookies()">
+      Accept essential
+    </button>
+    <button class="cookie-accept" (click)="acceptAllCookies()">
+      Accept all
+    </button>
+  </div>
+</div>

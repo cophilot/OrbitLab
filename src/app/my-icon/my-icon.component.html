@@ -4,8 +4,8 @@
   (mouseenter)="showDescription($event)"
   (mouseleave)="hideDescription()"
 >
-  <i [class]="name" *ngIf="!textIcon"></i>
-  <b *ngIf="textIcon">
+  <i [class]="name" *ngIf="!textIcon" [style.fontSize.px]="size"></i>
+  <b *ngIf="textIcon" [style.fontSize.px]="size">
     {{ name }}
   </b>
 </div>

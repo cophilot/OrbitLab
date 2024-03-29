@@ -10,6 +10,7 @@ import { NgIf } from '@angular/common';
 })
 export class MyIconComponent {
   @Input() name: string = '';
+  @Input() size: number = 26;
   @Input() description: string = '';
   @Input() border: boolean = false;
   @Input() textIcon: boolean = false;

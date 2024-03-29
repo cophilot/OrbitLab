@@ -79,9 +79,8 @@ export class SettingsComponent {
     return SettingsService;
   }
 
-  clearLocalStorage() {
-    LocalStorageService.clear();
-    alert('Local storage cleared!');
+  getLocalStorageService() {
+    return LocalStorageService;
   }
 
   goToHome() {
