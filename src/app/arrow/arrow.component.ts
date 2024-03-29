@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import Vector from 'src/types/Vector';
 import { SettingsService } from '../service/settings.service';
+import { ScaleService } from '../service/scale.service';
 
 @Component({
   selector: 'app-arrow',
@@ -20,7 +21,7 @@ export class ArrowComponent {
       Math.pow(this.endX - this.startX, 2) +
         Math.pow(this.endY - this.startY, 2)
     );
-    return Math.sqrt(0.5) * length;
+    return this.scale(Math.sqrt(0.5) * length);
   }
 
   getAngle(): number {
@@ -40,12 +41,16 @@ export class ArrowComponent {
   }
 
   getScreenCoordinates(): number[] {
-    const x = window.innerWidth / 2 + this.endX;
-    const y = window.innerHeight / 2 - this.endY;
+    const x = window.innerWidth / 2 + this.scale(this.endX);
+    const y = window.innerHeight / 2 - this.scale(this.endY);
     return [x, y];
   }
 
   isVisible(): boolean {
     return SettingsService.isVelocityArrowVisible();
+  }
+
+  scale(scale: number) {
+    return ScaleService.scale(scale);
   }
 }

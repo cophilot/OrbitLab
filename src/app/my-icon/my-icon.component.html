@@ -1,0 +1,19 @@
+<div
+  class="icon"
+  [class]="border ? 'border' : ''"
+  (mouseenter)="showDescription($event)"
+  (mouseleave)="hideDescription()"
+>
+  <i [class]="name" *ngIf="!textIcon"></i>
+  <b *ngIf="textIcon">
+    {{ name }}
+  </b>
+</div>
+<div
+  class="description border"
+  *ngIf="visibleDescription"
+  [style.top.px]="descriptionY"
+  [style.left.px]="descriptionX"
+>
+  <b>{{ description }}</b>
+</div>

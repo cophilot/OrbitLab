@@ -1,7 +1,7 @@
 <div
   class="object"
-  [style.width.px]="object.radius * 2"
-  [style.height.px]="object.radius * 2"
+  [style.width.px]="scale(object.radius * 2)"
+  [style.height.px]="scale(object.radius * 2)"
   [style.left.px]="object.getScreenCoordinates()[0]"
   [style.top.px]="object.getScreenCoordinates()[1]"
   [style.background-color]="object.color"
@@ -12,7 +12,7 @@
       'name' +
       (getObjectService().getSelectedObject() == object.id ? 'Selected' : '')
     "
-    [style.top.px]="object.radius * 2 - 20"
+    [style.top.px]="scale(object.radius * 2) - 20"
     *ngIf="areObjectNamesVisible()"
   >
     {{ object.name }}

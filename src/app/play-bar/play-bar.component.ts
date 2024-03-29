@@ -1,14 +1,21 @@
 import { Component } from '@angular/core';
 import { MoveService } from '../service/move.service';
 import { ObjectService } from '../service/object.service';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { NgIf } from '@angular/common';
+import { MyIconComponent } from '../my-icon/my-icon.component';
+import { ScaleService } from '../service/scale.service';
 
 @Component({
   selector: 'app-play-bar',
   templateUrl: './play-bar.component.html',
   styleUrls: ['./play-bar.component.sass'],
+  standalone: true,
+  imports: [CdkDrag, NgIf, MyIconComponent],
 })
 export class PlayBarComponent {
   playSpeed: number = 1;
+  isVisible: boolean = true;
 
   constructor(
     private moveService: MoveService,
@@ -67,5 +74,13 @@ export class PlayBarComponent {
 
   isPlaying() {
     return this.moveService.isPlaying;
+  }
+
+  zoomOut() {
+    ScaleService.zoomOut();
+  }
+
+  zoomIn() {
+    ScaleService.zoomIn();
   }
 }

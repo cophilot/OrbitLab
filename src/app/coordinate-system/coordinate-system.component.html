@@ -1,13 +1,13 @@
 <div class="system" (click)="unselectObject()" *ngIf="isVisibile()">
   <div
-    [class]="'xBar ' + (i == 0 ? 'primX' : '')"
     *ngFor="let x of getXBars(); index as i"
-    [style.left.px]="x"
+    [class]="'xBar ' + (i == 0 ? 'primX' : '')"
+    [style.left.px]="scale(x)"
   ></div>
   <div
-    [class]="'yBar ' + (i == 0 ? 'primY' : '')"
     *ngFor="let y of getYBars(); index as i"
-    [style.top.px]="y"
+    [class]="'yBar ' + (i == 0 ? 'primY' : '')"
+    [style.top.px]="scale(y)"
   ></div>
   <div class="indicatorX1"></div>
   <div class="indicatorX2"></div>

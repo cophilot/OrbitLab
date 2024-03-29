@@ -1,3 +1,4 @@
+import { ScaleService } from '../service/scale.service';
 import { VVector } from './VVector';
 
 export class Obj {
@@ -75,8 +76,8 @@ export class Obj {
   }
 
   getScreenCoordinates(): number[] {
-    let newX = this.x - this.radius + window.innerWidth / 2;
-    let newY = window.innerHeight / 2 - this.y - this.radius;
+    let newX = scale(this.x - this.radius) + window.innerWidth / 2;
+    let newY = window.innerHeight / 2 - scale(this.y) - scale(this.radius);
     return [newX, newY];
   }
 
@@ -91,4 +92,8 @@ export class Obj {
       json.color
     );
   }
+}
+
+function scale(scale: number): number {
+  return ScaleService.scale(scale);
 }

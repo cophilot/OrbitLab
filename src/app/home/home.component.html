@@ -4,12 +4,10 @@
   class="smallLogo backgroundBox"
   (click)="getObjectService().setSelectedObject(null)"
 />
-<img
-  src="assets/settingsIcon.png"
-  alt="settings"
-  class="settingsButton backgroundBox"
+<i
+  class="bi bi-gear settings-button backgroundBox"
   (click)="goToSettings()"
-/>
+></i>
 <app-coordinate-system></app-coordinate-system>
 <app-object
   *ngFor="let object of getObjectService().getObjects()"

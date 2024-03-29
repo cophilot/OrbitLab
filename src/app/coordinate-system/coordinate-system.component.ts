@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ObjectService } from '../service/object.service';
 import { LocalStorageService } from '../service/local-storage.service';
 import { SettingsService } from '../service/settings.service';
+import { ScaleService } from '../service/scale.service';
 
 @Component({
   selector: 'app-coordinate-system',
@@ -62,5 +63,10 @@ export class CoordinateSystemComponent {
 
   isVisibile() {
     return SettingsService.getGridSize() > 0;
+  }
+
+  scale(scale: number) {
+    return scale;
+    //return ScaleService.scale(scale);
   }
 }

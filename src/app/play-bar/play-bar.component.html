@@ -1,17 +1,48 @@
-<div class="container" *ngIf="!isPlaying()">
-  <button class="myButton" style="width: 100px" (click)="prevStep()">
-    Previous
-  </button>
-  <button class="myButton" style="width: 100px" (click)="nextStep()">
-    Next
-  </button>
-</div>
-<div class="container">
-  <button class="myButton" style="width: 100px" (click)="reset()">Reset</button>
-  <button class="myButton" style="width: 100px" (click)="togglePlayPause()">
-    {{ isPlaying() ? "Pause" : "Play" }}
-  </button>
-  <button class="myButton" style="width: 100px" (click)="toggleSpeed()">
-    {{ "x" + playSpeed }}
-  </button>
+<div class="bg" cdkDrag>
+  <div class="container" *ngIf="isVisible">
+    <app-my-icon
+      name="bi bi-zoom-out"
+      description="This is a test"
+      (click)="zoomOut()"
+    ></app-my-icon>
+    <app-my-icon
+      name="bi bi-zoom-in"
+      description="This is a test"
+      (click)="zoomIn()"
+    ></app-my-icon>
+  </div>
+
+  <div class="container" *ngIf="isVisible">
+    <app-my-icon name="bi bi-arrow-left-circle" (click)="prevStep()">
+    </app-my-icon>
+    <app-my-icon name="bi bi-arrow-right-circle" (click)="nextStep()">
+    </app-my-icon>
+  </div>
+  <div class="container" *ngIf="isVisible">
+    <app-my-icon
+      [name]="'bi bi-' + (isPlaying() ? 'pause' : 'play-fill')"
+      (click)="togglePlayPause()"
+    >
+    </app-my-icon>
+    <app-my-icon
+      [name]="'x' + playSpeed"
+      (click)="toggleSpeed()"
+      [textIcon]="true"
+    >
+    </app-my-icon>
+  </div>
+
+  <div class="container">
+    <app-my-icon
+      [name]="'bi bi-eye' + (isVisible ? '-slash' : '')"
+      (click)="isVisible = !isVisible"
+    >
+    </app-my-icon>
+    <app-my-icon
+      name="bi bi-arrow-counterclockwise"
+      (click)="reset()"
+      *ngIf="isVisible"
+    >
+    </app-my-icon>
+  </div>
 </div>
