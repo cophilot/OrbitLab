@@ -1,11 +1,16 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { ObjectService } from '../service/object.service';
 import { VVector } from '../utils/VVector';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add-object-form',
   templateUrl: './add-object-form.component.html',
   styleUrls: ['./add-object-form.component.sass'],
+  imports: [CdkDrag, NgIf, FormsModule],
+  standalone: true,
 })
 export class AddObjectFormComponent {
   name: string = '';

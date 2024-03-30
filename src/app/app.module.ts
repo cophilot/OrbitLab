@@ -21,16 +21,16 @@ import { MyIconComponent } from './my-icon/my-icon.component';
     AppComponent,
     ObjectComponent,
     CoordinateSystemComponent,
-    AddObjectFormComponent,
-    ObjectMetaDataComponent,
     ArrowComponent,
     SettingsComponent,
     HomeComponent,
     CookieMessageComponent,
+    ObjectMetaDataComponent,
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }], // Add HashLocationStrategy as a provider
   bootstrap: [AppComponent],
   imports: [
+    AddObjectFormComponent,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

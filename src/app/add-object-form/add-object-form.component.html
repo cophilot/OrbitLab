@@ -1,5 +1,5 @@
 <div class="background" (click)="close()"></div>
-<div class="container glass">
+<div class="container glass" cdkDrag>
   <h1>Add Object</h1>
   <p [style.color]="'red'" *ngIf="wrongInput">Wrong input!</p>
   <div class="row">
