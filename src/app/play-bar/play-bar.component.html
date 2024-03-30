@@ -4,6 +4,7 @@
       [name]="'x' + getZoomFactor().toFixed(2)"
       [textIcon]="true"
       [size]="16"
+      (click)="resetZoom()"
     ></app-my-icon>
     <app-my-icon
       name="bi bi-zoom-in"
@@ -32,13 +33,14 @@
     <app-my-icon name="bi bi-arrow-right-circle" (click)="nextStep()">
     </app-my-icon>
   </div>
-  <div class="container" *ngIf="isVisible">
+  <div class="container">
     <app-my-icon
       [name]="'bi bi-' + (isPlaying() ? 'pause' : 'play-fill')"
       (click)="togglePlayPause()"
     >
     </app-my-icon>
     <app-my-icon
+      *ngIf="isVisible"
       [name]="'x' + playSpeed"
       (click)="toggleSpeed()"
       [textIcon]="true"

@@ -62,8 +62,25 @@ export class PlayBarComponent {
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     // Handle keyboard events here
-    if (event.key === ' ') {
-      this.togglePlayPause();
+    switch (event.key) {
+      case 'ArrowRight':
+        this.nextStep();
+        break;
+      case 'ArrowLeft':
+        this.prevStep();
+        break;
+      case ' ':
+        this.togglePlayPause();
+        break;
+      case 'Enter':
+        this.toggleSpeed();
+        break;
+      case 'ArrowUp':
+        this.zoomIn();
+        break;
+      case 'ArrowDown':
+        this.zoomOut();
+        break;
     }
   }
 
@@ -98,6 +115,10 @@ export class PlayBarComponent {
 
   zoomIn(fast = false) {
     ScaleService.zoomIn(fast);
+  }
+
+  resetZoom() {
+    ScaleService.resetZoom();
   }
 
   getZoomFactor() {

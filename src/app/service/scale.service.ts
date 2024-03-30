@@ -24,6 +24,11 @@ export class ScaleService {
     CoordinateSystemComponent.render();
   }
 
+  static resetZoom() {
+    this.currentScale = 1;
+    CoordinateSystemComponent.render();
+  }
+
   static scale(scale: number): number {
     return scale * ScaleService.currentScale;
   }
