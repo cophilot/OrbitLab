@@ -13,9 +13,19 @@
   <div class="indicatorX2"></div>
   <div class="indicatorY1"></div>
   <div class="indicatorY2"></div>
+  <!--   <div *ngFor="let x of getXBars(); index as i">
+    <div
+      class="measure-band-x"
+      [style.left.px]="innerWidth() / 2 + scale(innerWidth() / 2 - x)"
+      [style.top.px]="innerHeight() / 2 - 10"
+    >
+      <div class="end"></div>
+      <p>{{ innerWidth() / 2 - x }}</p>
+    </div>
+  </div> -->
   <div
     class="measure-band-x"
-    [style.left.px]="innerWidth() / 2 + scale(100)"
+    [style.left.px]="innerWidth() / 2 + scale(100) - 2"
     [style.top.px]="innerHeight() / 2 - 10"
   >
     <div class="end"></div>

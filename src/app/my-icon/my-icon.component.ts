@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgIf } from '@angular/common';
+import { InfoBoxComponent } from '../info-box/info-box.component';
 
 @Component({
   selector: 'app-my-icon',
@@ -15,18 +16,11 @@ export class MyIconComponent {
   @Input() border: boolean = false;
   @Input() textIcon: boolean = false;
 
-  visibleDescription: boolean = false;
-  descriptionX: number = 0;
-  descriptionY: number = 0;
-
   showDescription(event: MouseEvent) {
-    //this.visibleDescription = true;
-    // get the position of the mouse
-    this.descriptionX = event.clientX;
-    this.descriptionY = event.clientY;
+    InfoBoxComponent.show(this.description);
   }
 
   hideDescription() {
-    this.visibleDescription = false;
+    InfoBoxComponent.hide();
   }
 }

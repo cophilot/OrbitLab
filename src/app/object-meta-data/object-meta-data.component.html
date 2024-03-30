@@ -5,10 +5,11 @@
   <div class="row">
     <b>{{ getObjectService().getSelectedObjectAsObject().name }}</b>
     <div class="frow">
-      <app-my-icon name="bi bi-pencil"></app-my-icon>
+      <app-my-icon name="bi bi-pencil" description="Edit object"></app-my-icon>
       <app-my-icon
         name="bi bi-trash"
         (click)="getObjectService().deleteSelectedObject()"
+        description="Delete object"
       ></app-my-icon>
     </div>
   </div>

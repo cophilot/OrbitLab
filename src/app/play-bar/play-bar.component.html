@@ -5,12 +5,14 @@
       [textIcon]="true"
       [size]="16"
       (click)="resetZoom()"
+      description="Reset zoom"
     ></app-my-icon>
     <app-my-icon
       name="bi bi-zoom-in"
       description="This is a test"
       (click)="zoomIn()"
       (dblclick)="zoomIn(true)"
+      description="Zoom in"
     ></app-my-icon>
   </div>
   <div class="container" *ngIf="isVisible">
@@ -19,24 +21,35 @@
       description="This is a test"
       (click)="zoomIn()"
       (dblclick)="zoomIn(true)"
+      description="Zoom in"
     ></app-my-icon>
     <app-my-icon
       name="bi bi-zoom-out"
       description="This is a test"
       (click)="zoomOut()"
       (dblclick)="zoomOut(true)"
+      description="Zoom out"
     ></app-my-icon>
   </div>
   <div class="container" *ngIf="isVisible">
-    <app-my-icon name="bi bi-arrow-left-circle" (click)="prevStep()">
+    <app-my-icon
+      name="bi bi-arrow-left-circle"
+      (click)="prevStep()"
+      description="Previous step"
+    >
     </app-my-icon>
-    <app-my-icon name="bi bi-arrow-right-circle" (click)="nextStep()">
+    <app-my-icon
+      name="bi bi-arrow-right-circle"
+      (click)="nextStep()"
+      description="Next step"
+    >
     </app-my-icon>
   </div>
   <div class="container">
     <app-my-icon
       [name]="'bi bi-' + (isPlaying() ? 'pause' : 'play-fill')"
       (click)="togglePlayPause()"
+      [description]="isPlaying() ? 'Pause' : 'Play'"
     >
     </app-my-icon>
     <app-my-icon
@@ -45,6 +58,7 @@
       (click)="toggleSpeed()"
       [textIcon]="true"
       [size]="20"
+      description="Change speed"
     >
     </app-my-icon>
   </div>
@@ -52,12 +66,14 @@
     <app-my-icon
       [name]="'bi bi-eye' + (isVisible ? '-slash' : '')"
       (click)="isVisible = !isVisible"
+      [description]="isVisible ? 'Hide Controls' : 'Show Controls'"
     >
     </app-my-icon>
     <app-my-icon
       name="bi bi-arrow-counterclockwise"
       (click)="reset()"
       *ngIf="isVisible"
+      description="Reset"
     >
     </app-my-icon>
   </div>

@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { CookieMessageComponent } from './cookie-message/cookie-message.component';
 import { PlayBarComponent } from './play-bar/play-bar.component';
 import { MyIconComponent } from './my-icon/my-icon.component';
+import { InfoBoxComponent } from './info-box/info-box.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MyIconComponent } from './my-icon/my-icon.component';
     HomeComponent,
     CookieMessageComponent,
     ObjectMetaDataComponent,
+    InfoBoxComponent,
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }], // Add HashLocationStrategy as a provider
   bootstrap: [AppComponent],
