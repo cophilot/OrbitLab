@@ -43,6 +43,31 @@
       }}
     </button>
   </div>
+  <div class="row">
+    <p class="label">Logo</p>
+    <button class="actionButton" (click)="getSettings().toggleLogoVisibility()">
+      {{ getSettings().isLogoVisible() ? "ON" : "OFF" }}
+    </button>
+  </div>
+  <div class="row">
+    <p class="label">Settings Icon</p>
+    <button
+      class="actionButton"
+      (click)="getSettings().toggleSettingsVisibility()"
+    >
+      {{ getSettings().isSettingsVisible() ? "ON" : "OFF" }}
+    </button>
+  </div>
+  <h2>Behavior</h2>
+  <div class="row">
+    <p class="label">Collision Mode</p>
+    <button
+      class="actionButton"
+      (click)="getSettings().toggleSettingsVisibility()"
+    >
+      {{ getSettings().isSettingsVisible() ? "ON" : "OFF" }}
+    </button>
+  </div>
   <h2>Examples</h2>
   <div class="row">
     <p class="label">Earth & Moon</p>

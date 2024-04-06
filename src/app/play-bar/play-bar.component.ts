@@ -5,6 +5,7 @@ import { CdkDrag } from '@angular/cdk/drag-drop';
 import { NgIf } from '@angular/common';
 import { MyIconComponent } from '../my-icon/my-icon.component';
 import { ScaleService } from '../service/scale.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-play-bar',
@@ -19,7 +20,8 @@ export class PlayBarComponent {
 
   constructor(
     private moveService: MoveService,
-    private objectService: ObjectService
+    private objectService: ObjectService,
+    private router: Router
   ) {}
 
   nextStep() {
@@ -123,5 +125,9 @@ export class PlayBarComponent {
 
   getZoomFactor() {
     return ScaleService.currentScale;
+  }
+
+  goToSettings() {
+    this.router.navigate(['settings']);
   }
 }

@@ -1,15 +1,12 @@
 <div class="bg glass" cdkDrag>
   <div class="container" *ngIf="isVisible">
     <app-my-icon
-      [name]="'x' + getZoomFactor().toFixed(2)"
-      [textIcon]="true"
-      [size]="16"
-      (click)="resetZoom()"
-      description="Reset zoom"
+      name="bi bi-gear"
+      (click)="goToSettings()"
+      description="Go to settings"
     ></app-my-icon>
     <app-my-icon
       name="bi bi-zoom-in"
-      description="This is a test"
       (click)="zoomIn()"
       (dblclick)="zoomIn(true)"
       description="Zoom in"
@@ -17,15 +14,14 @@
   </div>
   <div class="container" *ngIf="isVisible">
     <app-my-icon
-      name="bi bi-zoom-in"
-      description="This is a test"
-      (click)="zoomIn()"
-      (dblclick)="zoomIn(true)"
-      description="Zoom in"
+      [name]="'x' + getZoomFactor().toFixed(2)"
+      [textIcon]="true"
+      [size]="16"
+      (click)="resetZoom()"
+      description="Reset zoom"
     ></app-my-icon>
     <app-my-icon
       name="bi bi-zoom-out"
-      description="This is a test"
       (click)="zoomOut()"
       (dblclick)="zoomOut(true)"
       description="Zoom out"

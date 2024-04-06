@@ -11,6 +11,8 @@ export class SettingsService {
   private static gridSize = 50;
   private static showObjectNames = true;
   private static showVelocityArrow = true;
+  private static showLogo = true;
+  private static showSettings = true;
 
   static init() {
     if (this.isInit) {
@@ -21,6 +23,8 @@ export class SettingsService {
       this.gridSize = settings.gridSize;
       this.showObjectNames = settings.showObjectNames;
       this.showVelocityArrow = settings.showVelocityArrow;
+      this.showLogo = settings.showLogo;
+      this.showSettings = settings.showSettings;
     }
     this.isInit = true;
   }
@@ -31,6 +35,8 @@ export class SettingsService {
       gridSize: this.gridSize,
       showObjectNames: this.showObjectNames,
       showVelocityArrow: this.showVelocityArrow,
+      showLogo: this.showLogo,
+      showSettings: this.showSettings,
     });
   }
 
@@ -58,6 +64,28 @@ export class SettingsService {
   static toggleVelocityArrowVisibility(): void {
     this.init();
     this.showVelocityArrow = !this.showVelocityArrow;
+    this.saveSettings();
+  }
+
+  static isLogoVisible(): boolean {
+    this.init();
+    return this.showLogo;
+  }
+
+  static toggleLogoVisibility(): void {
+    this.init();
+    this.showLogo = !this.showLogo;
+    this.saveSettings();
+  }
+
+  static isSettingsVisible(): boolean {
+    this.init();
+    return this.showSettings;
+  }
+
+  static toggleSettingsVisibility(): void {
+    this.init();
+    this.showSettings = !this.showSettings;
     this.saveSettings();
   }
 

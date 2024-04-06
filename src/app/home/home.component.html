@@ -3,10 +3,12 @@
   alt="home"
   class="smallLogo backgroundBox"
   (click)="getObjectService().setSelectedObject(null)"
+  *ngIf="getSettingsService().isLogoVisible()"
 />
 <i
   class="bi bi-gear settings-button backgroundBox"
   (click)="goToSettings()"
+  *ngIf="getSettingsService().isSettingsVisible()"
 ></i>
 <app-coordinate-system></app-coordinate-system>
 <app-object
