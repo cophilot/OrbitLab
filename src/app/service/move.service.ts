@@ -5,8 +5,6 @@ import { ObjectService } from './object.service';
   providedIn: 'root',
 })
 export class MoveService {
-  static G = 6.6743e-11;
-
   private interval: any | null = null;
 
   isPlaying: boolean = false;

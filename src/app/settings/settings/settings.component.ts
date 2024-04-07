@@ -8,7 +8,6 @@ import {
   getPlutoCharonExample,
   getThreeBody,
 } from '../../../data/examples';
-import { CoordinateSystemComponent } from 'src/app/coordinate-system/coordinate-system.component';
 import { ObjectService } from 'src/app/service/object.service';
 
 @Component({

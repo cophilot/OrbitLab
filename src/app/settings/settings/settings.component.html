@@ -61,11 +61,8 @@
   <h2>Behavior</h2>
   <div class="row">
     <p class="label">Collision Mode</p>
-    <button
-      class="actionButton"
-      (click)="getSettings().toggleSettingsVisibility()"
-    >
-      {{ getSettings().isSettingsVisible() ? "ON" : "OFF" }}
+    <button class="actionButton" (click)="getSettings().toggleCollisionMode()">
+      {{ getSettings().getCollisionMode() }}
     </button>
   </div>
   <h2>Examples</h2>

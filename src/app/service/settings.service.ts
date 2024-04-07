@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
 import { CoordinateSystemComponent } from '../coordinate-system/coordinate-system.component';
+import {
+  CollisionMode,
+  collisionModeToString,
+  rotateCollisionMode,
+} from '../../types/CollisionMode';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +19,8 @@ export class SettingsService {
   private static showLogo = true;
   private static showSettings = true;
 
+  private static collisionMode: CollisionMode = CollisionMode.IGNORE;
+
   static init() {
     if (this.isInit) {
       return;
@@ -25,6 +32,7 @@ export class SettingsService {
       this.showVelocityArrow = settings.showVelocityArrow;
       this.showLogo = settings.showLogo;
       this.showSettings = settings.showSettings;
+      this.collisionMode = settings.collisionMode;
     }
     this.isInit = true;
   }
@@ -37,6 +45,7 @@ export class SettingsService {
       showVelocityArrow: this.showVelocityArrow,
       showLogo: this.showLogo,
       showSettings: this.showSettings,
+      collisionMode: this.collisionMode,
     });
   }
 
@@ -86,6 +95,17 @@ export class SettingsService {
   static toggleSettingsVisibility(): void {
     this.init();
     this.showSettings = !this.showSettings;
+    this.saveSettings();
+  }
+
+  static getCollisionMode(): string {
+    this.init();
+    return collisionModeToString(this.collisionMode);
+  }
+
+  static toggleCollisionMode(): void {
+    this.init();
+    this.collisionMode = rotateCollisionMode(this.collisionMode);
     this.saveSettings();
   }
 
