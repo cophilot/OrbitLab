@@ -39,9 +39,11 @@ export class ObjectService {
     LocalStorageService.saveObjects(this.objects);
   }
 
-  addObject(object: Obj): void {
+  addObject(object: Obj, save = true): void {
     this.objects.push(object);
-    LocalStorageService.saveObjects(this.objects);
+    if (save) {
+      LocalStorageService.saveObjects(this.objects);
+    }
   }
 
   addObjectFromJSON(json: any): void {
@@ -50,9 +52,11 @@ export class ObjectService {
     LocalStorageService.saveObjects(this.objects);
   }
 
-  deleteObject(id: number): void {
+  deleteObject(id: number, save = true): void {
     this.objects = this.objects.filter((object) => object.id !== id);
-    LocalStorageService.saveObjects(this.objects);
+    if (save) {
+      LocalStorageService.saveObjects(this.objects);
+    }
   }
 
   getSelectedObject(): number {
@@ -92,6 +96,28 @@ export class ObjectService {
         },
       };
     });
+  }
+
+  joinObjects(object1: Obj, object2: Obj): void {
+    let prim = object1;
+    let sec = object2;
+    if (object1.weight < object2.weight) {
+      prim = object2;
+      sec = object1;
+    }
+
+    const newObject = new Obj(
+      prim.name + '_' + sec.name,
+      prim.x,
+      prim.y,
+      prim.radius + sec.radius / 2,
+      prim.weight + sec.weight,
+      prim.velocity.add(sec.velocity.div(2)),
+      prim.color
+    );
+    this.deleteObject(prim.id, false);
+    this.deleteObject(sec.id, false);
+    this.addObject(newObject, false);
   }
 
   empty(): void {

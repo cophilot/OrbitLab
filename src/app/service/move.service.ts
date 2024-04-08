@@ -78,13 +78,14 @@ export class MoveService {
   }
 
   handleCollision(object1: Obj, object2: Obj) {
-    if (SettingsService.getCollisionMode() === CollisionMode.IGNORE) {
-      return;
-    }
-    if (SettingsService.getCollisionMode() === CollisionMode.END) {
-      alert('Collision detected: ' + object1.name + ' and ' + object2.name);
-      this.stop();
-      return;
+    switch (SettingsService.getCollisionMode()) {
+      case CollisionMode.JOIN:
+        this.objectService.joinObjects(object1, object2);
+        break;
+      case CollisionMode.STOP:
+        alert('Collision detected: ' + object1.name + ' and ' + object2.name);
+        this.stop();
+        break;
     }
   }
 }
