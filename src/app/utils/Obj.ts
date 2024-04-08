@@ -71,6 +71,20 @@ export class Obj {
     }
   }
 
+  isColliding(object2: Obj): boolean {
+    if (this.id === object2.id) {
+      return false;
+    }
+    return this.getDistanceTo(object2) <= this.radius + object2.radius;
+  }
+
+  getDistanceTo(object2: Obj): number {
+    return Math.sqrt(
+      (this.x - object2.x) * (this.x - object2.x) +
+        (this.y - object2.y) * (this.y - object2.y)
+    );
+  }
+
   makeHistoryPoint() {
     this.history.push({ x: this.x, y: this.y });
   }
