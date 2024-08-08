@@ -15,6 +15,7 @@ export class MyIconComponent {
   @Input() description: string = '';
   @Input() border: boolean = false;
   @Input() textIcon: boolean = false;
+  @Input() text: string = '';
 
   showDescription(event: MouseEvent) {
     InfoBoxComponent.show(this.description);

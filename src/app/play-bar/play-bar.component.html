@@ -14,7 +14,7 @@
   </div>
   <div class="container" *ngIf="isVisible">
     <app-my-icon
-      [name]="'x' + getZoomFactor().toFixed(2)"
+      [text]="'x' + getZoomFactor().toFixed(2)"
       [textIcon]="true"
       [size]="16"
       (click)="resetZoom()"
@@ -50,7 +50,7 @@
     </app-my-icon>
     <app-my-icon
       *ngIf="isVisible"
-      [name]="'x' + playSpeed"
+      [text]="'x' + playSpeed"
       (click)="toggleSpeed()"
       [textIcon]="true"
       [size]="20"
