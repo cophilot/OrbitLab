@@ -5,7 +5,7 @@
   (mouseleave)="hideDescription()"
 >
   <i [class]="name" [style.fontSize.px]="size"></i>
-  <b *ngIf="textIcon" [style.fontSize.px]="size">
+  <b *ngIf="textIcon && text != ''" [style.fontSize.px]="size">
     {{ text }}
   </b>
 </div>
