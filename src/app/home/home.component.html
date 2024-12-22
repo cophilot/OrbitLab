@@ -15,10 +15,12 @@
   *ngFor="let object of getObjectService().getObjects()"
   [object]="object"
 ></app-object>
+
 <app-add-object-form
   *ngIf="showAddObjectForm"
   (closeForm)="closeAddObjectForm()"
 ></app-add-object-form>
+
 <app-my-icon
   class="glass"
   name="bi bi-plus-circle-dotted"

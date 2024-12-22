@@ -24,6 +24,31 @@ export class ObjectService {
     return this.objects;
   }
 
+  checkName(name: string) {
+    return !this.objects.find((object) => object.name === name);
+  }
+
+  editObject(
+    name: string,
+    startX: number,
+    startY: number,
+    radius: number,
+    weight: number,
+    velocity: VVector,
+    color: string = 'red'
+  ): void {
+    if (!this.selectedObject) {
+      return;
+    }
+    this.deleteObject(this.selectedObject.id, false);
+    this.addObject(
+      new Obj(name, startX, startY, radius, weight, velocity, color),
+      false
+    );
+    this.selectedObject = null;
+    LocalStorageService.saveObjects(this.objects);
+  }
+
   addNewObject(
     name: string,
     startX: number,
@@ -75,6 +100,13 @@ export class ObjectService {
   }
 
   deleteSelectedObject(): void {
+    if (this.selectedObject) {
+      this.deleteObject(this.selectedObject.id);
+    }
+    this.selectedObject = null;
+  }
+
+  editSelectedObject(): void {
     if (this.selectedObject) {
       this.deleteObject(this.selectedObject.id);
     }
