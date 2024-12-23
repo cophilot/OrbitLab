@@ -5,6 +5,7 @@ import { LocalStorageService } from 'src/app/service/local-storage.service';
 import {
   getEarthMoonExample,
   getEllipticalOrbit,
+  getFlyByExample,
   getPlutoCharonExample,
   getThreeBody,
 } from '../../../data/examples';
@@ -29,6 +30,17 @@ export class SettingsComponent {
     document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
+  }
+
+  shareURL() {
+    const objString = this.objectService.getObjectsAsURLString();
+    const url = window.location.origin + '/#/share/' + objString;
+    const textArea = document.createElement('textarea');
+    textArea.value = url;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    textArea.remove();
   }
 
   importObjects() {
@@ -64,6 +76,9 @@ export class SettingsComponent {
         break;
       case 'three-body':
         objects = getThreeBody();
+        break;
+      case 'flyby':
+        objects = getFlyByExample();
         break;
       default:
         break;

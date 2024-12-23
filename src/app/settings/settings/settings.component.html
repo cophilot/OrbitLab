@@ -89,12 +89,20 @@
     </button>
   </div>
   <div class="row">
+    <p class="label">Flyby</p>
+    <button class="actionButton" (click)="importExample('flyby')">Load</button>
+  </div>
+  <div class="row">
     <p class="label">Three Body</p>
     <button class="actionButton" (click)="importExample('three-body')">
       Load
     </button>
   </div>
-  <h2>Import & Export</h2>
+  <h2>Share</h2>
+  <div class="row">
+    <p class="label">Share via URL</p>
+    <button class="actionButton" (click)="shareURL()">Copy URL</button>
+  </div>
   <div class="row">
     <p class="label">Import from JSON</p>
     <button class="actionButton" (click)="importObjects()">Import</button>

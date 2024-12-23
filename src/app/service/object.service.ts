@@ -77,6 +77,11 @@ export class ObjectService {
     LocalStorageService.saveObjects(this.objects);
   }
 
+  addObjectFromURL(serializedObjs: string): void {
+    this.objects = Obj.deserializeArray(serializedObjs);
+    LocalStorageService.saveObjects(this.objects);
+  }
+
   deleteObject(id: number, save = true): void {
     this.objects = this.objects.filter((object) => object.id !== id);
     if (save) {
@@ -128,6 +133,10 @@ export class ObjectService {
         },
       };
     });
+  }
+
+  getObjectsAsURLString(): string {
+    return Obj.serializeArray(this.objects);
   }
 
   joinObjects(object1: Obj, object2: Obj): void {

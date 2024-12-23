@@ -95,6 +95,41 @@ export class Obj {
     return [newX, newY];
   }
 
+  serialize(): any {
+    const name = this.name.replace(/ /g, '_');
+    const color = this.color.replace(/#/g, '!');
+    return `${name}~${this.x}~${this.y}~${this.radius}~${this.weight}~${this.velocity.x}~${this.velocity.y}~${color}`;
+  }
+
+  static deserialize(serialized: string): Obj {
+    const parts = serialized.split('~');
+    const name = parts[0].replace(/_/g, ' ');
+    const x = parseFloat(parts[1]);
+    const y = parseFloat(parts[2]);
+    const radius = parseFloat(parts[3]);
+    const weight = parseFloat(parts[4]);
+    const velocity = new VVector(parseFloat(parts[5]), parseFloat(parts[6]));
+    const color = parts[7].replace(/!/g, '#');
+    return new Obj(name, x, y, radius, weight, velocity, color);
+  }
+
+  static deserializeArray(serialized: string): Obj[] {
+    serialized = serialized.replace(/%20/g, ' ').replace(/=/g, '');
+    const objects: Obj[] = [];
+    serialized.split(';').forEach((serializedObj) => {
+      try {
+        objects.push(Obj.deserialize(serializedObj));
+      } catch (e) {
+        console.error(e);
+      }
+    });
+    return objects;
+  }
+
+  static serializeArray(objects: Obj[]): string {
+    return objects.map((object) => object.serialize()).join(';');
+  }
+
   static getObjFromJson(json: any): Obj {
     return new Obj(
       json.name,

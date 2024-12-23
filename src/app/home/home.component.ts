@@ -11,7 +11,21 @@ import { SettingsService } from '../service/settings.service';
 export class HomeComponent {
   showAddObjectForm = false;
 
-  constructor(private objectService: ObjectService, private router: Router) {}
+  constructor(private objectService: ObjectService, private router: Router) {
+    const url = this.router.url;
+    if (!url.includes('share')) {
+      return;
+    }
+    const parts = url.split('share/');
+    if (!parts || parts.length < 2) {
+      return;
+    }
+    const objects = parts[1];
+    if (!objects) {
+      return;
+    }
+    objectService.addObjectFromURL(objects);
+  }
 
   getObjectService() {
     return this.objectService;

@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'settings', component: SettingsComponent },
+  { path: 'share/:objects', component: HomeComponent },
+  { path: '*', component: HomeComponent },
 ];
 
 @NgModule({

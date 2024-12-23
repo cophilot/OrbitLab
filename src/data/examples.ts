@@ -21,6 +21,29 @@ export const getEarthMoonExample = (): any[] => {
   ];
 };
 
+export const getFlyByExample = (): any[] => {
+  return [
+    {
+      name: 'Planet',
+      x: 0,
+      y: 0,
+      radius: 50,
+      color: '#ffffff',
+      weight: 1000000,
+      velocity: { x: 0, y: 0 },
+    },
+    {
+      name: 'Probe',
+      x: 500,
+      y: 500,
+      radius: 10,
+      color: '#e01b24',
+      weight: 10,
+      velocity: { x: -75, y: -100 },
+    },
+  ];
+};
+
 export const getPlutoCharonExample = (): any[] => {
   return [
     {
